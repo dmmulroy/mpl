@@ -984,6 +984,28 @@ case("colorbar_lognorm_nonpositive", ("imshow", [{"$array": [[0, 2, 40], [-5, 80
 case("colorbar_lognorm_scatter_horizontal", ("scatter", [lin(16, 0, 15), lin(16, 0, 3)], {"c": [0.02 * 2.1 ** i for i in range(16)], "cmap": "coolwarm", "norm": "log", "s": 40}),
      ("fig.colorbar", [], {"orientation": "horizontal"}))
 
+# Issue #84: Axes.pie (Wedge patches, Shadow, label/autopct Texts; frame=False sets equal aspect, ±1.25 limits, no frame)
+PIE = [15, 30, 45, 10]
+PIE_LABELS = ["Frogs", "Hogs", "Dogs", "Logs"]
+case("pie_basic", ("pie", [PIE], {"labels": PIE_LABELS}))
+case("pie_autopct_explode_shadow", ("pie", [PIE], {"labels": PIE_LABELS, "autopct": "%1.1f%%", "explode": [0, 0.1, 0, 0],
+     "shadow": True, "startangle": 90}), ("set_title", ["explode + shadow"]))
+case("pie_donut", ("pie", [[30, 25, 20, 15, 10]], {"labels": ["a", "b", "c", "d", "e"], "autopct": "%.0f%%", "pctdistance": 0.8,
+     "wedgeprops": {"width": 0.4, "edgecolor": "w", "linewidth": 2}, "startangle": 30,
+     "shadow": {"ox": -0.04, "oy": -0.03, "shade": 0.5}}))
+case("pie_partial", ("pie", [[0.2, 0.3, 0.15]], {"normalize": False, "labels": ["20%", "30%", "15%"], "autopct": "%1.0f%%",
+     "colors": ["C3", "C4", "C5"]}))
+case("pie_clockwise_rotatelabels", ("pie", [[10, 20, 30, 25, 15]], {"labels": ["north", "east-ish", "south", "west", "last"],
+     "counterclock": False, "rotatelabels": True, "startangle": 45, "labeldistance": 1.05}))
+case("pie_legend", ("pie", [PIE], {"labels": PIE_LABELS, "autopct": "%d%%", "textprops": {"color": "w", "fontsize": 9}}),
+     ("legend", []), ("set_title", ["with a legend"]))
+case("pie_props", ("pie", [[3, 1, 2, 2.5]], {"radius": 0.8, "center": [0.2, -0.1], "labels": ["w", "x", "y", "z"], "labeldistance": None,
+     "autopct": "%.2f", "colors": ["0.8", "tab:orange"], "textprops": {"fontsize": "small", "color": "C3", "fontweight": "bold"}}),
+     ("legend", [], {"loc": "upper left", "fontsize": 8}))
+case("pie_subplot_grid", ("$subplots", [1, 2]),
+     ("sca", [0]), ("plot", [x, sx]), ("set_title", ["a line"]),
+     ("sca", [1]), ("pie", [[5, 3, 2]], {"labels": ["five", "three", "two"], "autopct": "%1.1f%%"}), ("set_title", ["a pie"]))
+
 def main():
     check_no_literal_newlines(CASES)
     with open(INDEX, "r") as f:

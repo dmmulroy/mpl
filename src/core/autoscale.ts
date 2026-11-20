@@ -105,6 +105,7 @@ export function dataExtents(artists: readonly Artist[]): { readonly x: Extent; r
         else { scan(new Float64Array([a.a0, a.a1]), Y); }
         break;
       case 'text': break;                            // text does not update data limits
+      case 'wedge': break;                           // pie fixes both limits (frame=False), so wedges never autoscale
       default: assertNever(a);
     }
   }

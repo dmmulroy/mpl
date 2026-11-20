@@ -205,6 +205,8 @@ export type TextArtist = {
   readonly kind: 'text'; readonly x: number; readonly y: number; readonly coords: TextCoords; readonly text: string;
   readonly sizePt: number; readonly weight: number; readonly color: Rgb; readonly ha: HAlign; readonly va: VAlign;
   readonly clip: boolean;
+  /** Text.rotation in degrees CCW, normalized to [0, 360) (rotation_mode='default'); 0 is horizontal. */
+  readonly rotation: number;
 };
 /** Scatter: a PathCollection of identical markers at (x, y), size in pt^2 (matplotlib semantics). */
 export type ScatterArtist = {
@@ -302,8 +304,19 @@ export type StickyArtist = {
   readonly label: Label;
   readonly clip: boolean;
 };
+/**
+ * A Wedge patch (Axes.pie): Path.arc(theta1, theta2) (degrees) scaled by r about (cx, cy), closed through the centre,
+ * or the ring between r − width and r. `shift` makes it a patches.Shadow of that wedge: its path moves by
+ * (ox, oy)·dpi/72 in data units (Shadow._update_transform's translation, composed before transData).
+ */
+export type WedgeArtist = {
+  readonly kind: 'wedge'; readonly cx: number; readonly cy: number; readonly r: number;
+  readonly theta1: number; readonly theta2: number; readonly width: Option<number>;
+  readonly face: Paint; readonly edge: BarEdge; readonly label: Label; readonly clip: boolean; readonly zorder: number;
+  readonly shift: Option<{ readonly oxPt: number; readonly oyPt: number }>;
+};
 export type Artist = LineArtist | BarArtist | FillArtist | TextArtist | ScatterArtist | AnnotationArtist | SpanArtist
-  | AxLineArtist | SegmentsArtist | PolygonArtist | ErrorbarArtist | ImageArtist | StickyArtist;
+  | AxLineArtist | SegmentsArtist | PolygonArtist | ErrorbarArtist | ImageArtist | StickyArtist | WedgeArtist;
 
 /** What a legend entry draws. */
 export type Handle =
@@ -431,6 +444,8 @@ export type AxesSpec = {
   readonly xShare: number; readonly yShare: number;
   /** label_outer: this Axes draws no tick labels (major or minor) and no offset text on that axis */
   readonly hiddenLabels: { readonly x: boolean; readonly y: boolean };
+  /** Axes.set_frame_on: false draws neither the axes patch nor the spines (pie with frame=False). */
+  readonly frameOn: boolean;
 };
 export type FigureSpec = {
   readonly widthIn: number; readonly heightIn: number; readonly dpi: number; readonly theme: Theme; readonly axes: readonly AxesSpec[];

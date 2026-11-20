@@ -79,7 +79,7 @@ function seriesOf(a: Artist): Series {
       return { x, y, base, snap: a.orientation === 'vertical' ? 'x' : 'y' };
     }
     case 'fill': case 'text': case 'annotation': case 'span': case 'axline': case 'segments': case 'polygon':
-    case 'errorbar': case 'image': case 'sticky': return none;
+    case 'errorbar': case 'image': case 'sticky': case 'wedge': return none;
     default: return assertNever(a);
   }
 }
@@ -89,7 +89,7 @@ function colorOf(a: Artist): readonly string[] {
     case 'line': return [...(a.stroke.kind === 'on' ? [a.stroke.color.hex] : []), ...(a.markers.kind === 'on' ? paintHex(a.markers.face, a.markers.edge) : [])];
     case 'scatter': return paintHex(...a.collection.faces, ...a.collection.edges);
     case 'bar': return [...paintHex(a.face), ...(a.edge.kind === 'on' ? [a.edge.color.hex] : [])];
-    case 'fill': case 'polygon': case 'span': return paintHex(a.face);
+    case 'fill': case 'polygon': case 'span': case 'wedge': return paintHex(a.face);
     case 'axline': return a.stroke.kind === 'on' ? [a.stroke.color.hex] : [];
     case 'segments': return a.colors.slice(0, 1).map((c) => c.hex);
     case 'text': case 'annotation': return [a.color.hex];

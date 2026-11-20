@@ -195,3 +195,65 @@ export function exp(x: number): number {
   }
   return s * 2 ** k;
 }
+
+// ---------------------------------------------------------------- sin, cos, tan
+// Path.arc builds its control points from np.cos / np.sin of an angle grid and np.tan / np.sin of the step, and pie's
+// geometry calls math.cos / math.sin. glibc (and numpy, which matches it on x86-64) rounds these correctly in practice;
+// V8's fdlibm is off by one ulp on a few arc angles (cos(5π/4) among them). Same method as exp: reduce by k·π/2 with
+// π/2 as three doubles (Cody–Waite, the products exact through twoProd), a double-double Taylor series on |r| ≤ π/4,
+// one rounding at the end.
+const PIO2_1 = 1.5707963267948966, PIO2_2 = 6.123233995736766e-17, PIO2_3 = -1.4973849048591698e-33;
+
+/** x − k·π/2 as a double-double in (R[0], R[1]), and the quadrant k mod 4. */
+function reduce(x: number): number {
+  const k = Math.round(x / PIO2_1);
+  twoProd(-k, PIO2_1);
+  const a0 = R[0], a1 = R[1];
+  twoProd(-k, PIO2_2);
+  const b0 = R[0], b1 = R[1] - k * PIO2_3;
+  add(x, 0, a0, a1);
+  add(R[0], R[1], b0, b1);
+  return ((k % 4) + 4) % 4;
+}
+/** sin (odd = 1) or cos (odd = 0) of the double-double r, |r| ≤ π/4, into (R[0], R[1]). */
+function series(r0: number, r1: number, odd: 0 | 1): void {
+  mul(r0, r1, r0, r1);
+  const q0 = -R[0], q1 = -R[1];        // −r²
+  let t0 = odd === 1 ? r0 : 1, t1 = odd === 1 ? r1 : 0, sum0 = t0, sum1 = t1;
+  for (let i = 1; i < 16; i++) {
+    const n = 2 * i + odd;
+    mul(t0, t1, q0, q1);
+    div(R[0], R[1], (n - 1) * n, 0); t0 = R[0]; t1 = R[1];
+    add(sum0, sum1, t0, t1); sum0 = R[0]; sum1 = R[1];
+  }
+  R[0] = sum0; R[1] = sum1;
+}
+/** sin or cos of x as a double-double in (R[0], R[1]). */
+function sinCosDD(x: number, wantCos: boolean): void {
+  const q = (reduce(x) + (wantCos ? 1 : 0)) % 4;
+  const r0 = R[0], r1 = R[1];
+  series(r0, r1, q % 2 === 0 ? 1 : 0);
+  if (q >= 2) { R[0] = -R[0]; R[1] = -R[1]; }
+}
+const trigOk = (x: number): boolean => Number.isFinite(x) && Math.abs(x) < 2 ** 30;
+/** Correctly rounded sin (glibc's, np.sin's); huge or non-finite arguments go to Math.sin. */
+export function sin(x: number): number {
+  if (!trigOk(x) || x === 0) return Math.sin(x);
+  sinCosDD(x, false);
+  return R[0] + R[1];
+}
+/** Correctly rounded cos (glibc's, np.cos's); huge or non-finite arguments go to Math.cos. */
+export function cos(x: number): number {
+  if (!trigOk(x)) return Math.cos(x);
+  sinCosDD(x, true);
+  return R[0] + R[1];
+}
+/** Correctly rounded tan (glibc's, np.tan's); huge or non-finite arguments go to Math.tan. */
+export function tan(x: number): number {
+  if (!trigOk(x) || x === 0) return Math.tan(x);
+  sinCosDD(x, false);
+  const s0 = R[0], s1 = R[1];
+  sinCosDD(x, true);
+  div(s0, s1, R[0], R[1]);
+  return R[0] + R[1];
+}
