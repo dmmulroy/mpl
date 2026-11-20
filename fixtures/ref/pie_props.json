@@ -1,0 +1,204 @@
+{
+ "spec": [
+  [
+   "pie",
+   [
+    [
+     3,
+     1,
+     2,
+     2.5
+    ]
+   ],
+   {
+    "radius": 0.8,
+    "center": [
+     0.2,
+     -0.1
+    ],
+    "labels": [
+     "w",
+     "x",
+     "y",
+     "z"
+    ],
+    "labeldistance": null,
+    "autopct": "%.2f",
+    "colors": [
+     "0.8",
+     "tab:orange"
+    ],
+    "textprops": {
+     "fontsize": "small",
+     "color": "C3",
+     "fontweight": "bold"
+    }
+   }
+  ],
+  [
+   "legend",
+   [],
+   {
+    "loc": "upper left",
+    "fontsize": 8
+   }
+  ]
+ ],
+ "style": null,
+ "rc": {},
+ "xlim": [
+  -1.05,
+  1.45
+ ],
+ "ylim": [
+  -1.35,
+  1.15
+ ],
+ "xticks": [],
+ "yticks": [],
+ "xticklabels": [],
+ "yticklabels": [],
+ "xoffset": "",
+ "yoffset": "",
+ "legend": {
+  "loc": 2,
+  "x0": 148.75555555555553,
+  "x1": 197.84930555555553,
+  "top": 63.155555555555566,
+  "bottom": 133.15555555555557,
+  "texts": [
+   "w",
+   "x",
+   "y",
+   "z"
+  ]
+ },
+ "x": {
+  "lim": [
+   -1.05,
+   1.45
+  ],
+  "ticks": [],
+  "labels": [],
+  "minor": [],
+  "minorlabels": [],
+  "offset": ""
+ },
+ "y": {
+  "lim": [
+   -1.35,
+   1.15
+  ],
+  "ticks": [],
+  "labels": [],
+  "minor": [],
+  "minorlabels": [],
+  "offset": ""
+ },
+ "axes": [
+  {
+   "xlim": [
+    -1.05,
+    1.45
+   ],
+   "ylim": [
+    -1.35,
+    1.15
+   ],
+   "xticks": [],
+   "yticks": [],
+   "xticklabels": [],
+   "yticklabels": [],
+   "xoffset": "",
+   "yoffset": "",
+   "legend": {
+    "loc": 2,
+    "x0": 148.75555555555553,
+    "x1": 197.84930555555553,
+    "top": 63.155555555555566,
+    "bottom": 133.15555555555557,
+    "texts": [
+     "w",
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   "x": {
+    "lim": [
+     -1.05,
+     1.45
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   },
+   "y": {
+    "lim": [
+     -1.35,
+     1.15
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   }
+  }
+ ],
+ "figaxes": [
+  {
+   "xlim": [
+    -1.05,
+    1.45
+   ],
+   "ylim": [
+    -1.35,
+    1.15
+   ],
+   "xticks": [],
+   "yticks": [],
+   "xticklabels": [],
+   "yticklabels": [],
+   "xoffset": "",
+   "yoffset": "",
+   "legend": {
+    "loc": 2,
+    "x0": 148.75555555555553,
+    "x1": 197.84930555555553,
+    "top": 63.155555555555566,
+    "bottom": 133.15555555555557,
+    "texts": [
+     "w",
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   "x": {
+    "lim": [
+     -1.05,
+     1.45
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   },
+   "y": {
+    "lim": [
+     -1.35,
+     1.15
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   }
+  }
+ ]
+}

@@ -2,31 +2,31 @@
   "tolerance": 0.02,
   "note": "bytes; esbuild --minify then gzip -9; see scripts/bundle_size.ts",
   "main": {
-    "min": 534028,
-    "gzip": 188804
+    "min": 552292,
+    "gzip": 195067
   },
   "lean": {
-    "min": 367403,
-    "gzip": 124254
+    "min": 385669,
+    "gzip": 130526
   },
   "lean+inter+2cmaps": {
-    "min": 872995,
-    "gzip": 229573
+    "min": 891258,
+    "gzip": 235558
   },
   "everything": {
-    "min": 1430062,
-    "gzip": 428393
+    "min": 1448319,
+    "gzip": 433669
   },
   "main+annotate": {
-    "min": 538396,
-    "gzip": 191115
+    "min": 556684,
+    "gzip": 197244
   },
   "interactive": {
-    "min": 18282,
-    "gzip": 7603
+    "min": 18624,
+    "gzip": 7733
   },
   "zoom": {
-    "min": 31282,
-    "gzip": 12256
+    "min": 31626,
+    "gzip": 12383
   }
 }

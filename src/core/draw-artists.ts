@@ -17,6 +17,9 @@ import {
   type Aff, interpolationStage, resampleAffineFloat, resampleAffineRgba,
   resolveInterp, UnsupportedInterpolationError,
 } from './image-resample.ts';
+import { CLOSEPOLY, CURVE4, LINETO, MOVETO, wedgePath } from './pie.ts';
+import { flatten } from '../render/agg/stroke.ts';
+import type { WedgeArtist } from './types.ts';
 import type { Artist, AxLineArtist, MarkerName, ScatterCollection, BarArtist, PolygonArtist, SegmentsArtist, Clip, FillArtist, Handle, ImageArtist, LineArtist, Node, Option, PathNode, Seg, Stroke, TextArtist, Theme, ScatterArtist, SpanArtist, AnnotationArtist, AnnotationCoords, AnnotationCoordPair, Paint } from './types.ts';
 import { labelNodes } from './draw-axis.ts';
 import { measure, placeLayout, pxPerPt, strokePx, windowExtent } from './text.ts';
@@ -28,7 +31,13 @@ import type { SpanHandle } from '../trace.ts';
 
 /** What an artist draws, plus what loc='best' avoids: line vertices and paths, patch boxes, and collection offsets
  *  (points, display y up; they count when strictly inside but, unlike a line, do not intersect). */
-export type Drawn = { readonly nodes: readonly Node[]; readonly lines: readonly XY[]; readonly boxes: readonly Box[]; readonly points: readonly XY[]; readonly handle: Option<Handle> };
+export type Drawn = {
+  readonly nodes: readonly Node[]; readonly lines: readonly XY[]; readonly boxes: readonly Box[]; readonly points: readonly XY[];
+  /** a curved Patch path for loc='best': its flattened polyline (display, y up) only intersects; its own vertices
+   *  (control points included) are counted through `points` */
+  readonly paths: readonly XY[];
+  readonly handle: Option<Handle>;
+};
 
 /** The artist's legend handle. It depends on the artist alone (not the frame), so a layout that only measures
  *  (tight_layout's first pass) can build legend entries without drawing. Every draw* returns this. */
@@ -37,7 +46,7 @@ export function handleOf(a: Artist): Option<Handle> {
     case 'line': return some({ kind: 'line', stroke: a.stroke, markers: a.markers });
     case 'axline': return some({ kind: 'line', stroke: a.stroke, markers: { kind: 'none' } });
     case 'segments': return some({ kind: 'collection', color: a.colors[0], widthPt: a.widthPt, style: a.styles[0] });
-    case 'bar': case 'fill': case 'polygon': case 'span': return some({ kind: 'patch', face: a.face, edge: a.edge });
+    case 'bar': case 'fill': case 'polygon': case 'span': case 'wedge': return some({ kind: 'patch', face: a.face, edge: a.edge });
     case 'scatter': return some({ kind: 'scatter', shape: a.shape, collection: a.collection, edgeWidthPt: a.edgeWidthPt });
     case 'errorbar': return some({ kind: 'errorbar', errorbar: a.handle });
     case 'image': return none;
@@ -158,7 +167,7 @@ export function drawLine(a: LineArtist, f: Frame, theme: Theme, k: number, clip:
   }
   return {
     nodes: nodes.length > 0 ? [{ kind: 'group', clip, nodes, tag: '' }] : [],
-    lines: [finitePairs(line.xs, line.ysUp)], boxes: [], points: [],
+    lines: [finitePairs(line.xs, line.ysUp)], boxes: [], points: [], paths: [],
     handle: handleOf(a),
   };
 }
@@ -192,7 +201,7 @@ export function drawAxLine(a: AxLineArtist, f: Frame, theme: Theme, k: number, c
   const ys = Float64Array.of(start[1] * -f.ay + (f.Hg - f.cy), stop[1] * -f.ay + (f.Hg - f.cy));
   const up = Float64Array.of(start[1] * f.ay + f.cy, stop[1] * f.ay + f.cy);
   const nodes = a.stroke.kind === 'on' ? strokeNodes(xs, ys, lineStroke(theme, a.stroke.color, a.stroke.widthPt, a.stroke.style, k, none), theme, f, span) : [];
-  return { nodes: nodes.length > 0 ? [{ kind: 'group', clip, nodes, tag: '' }] : [], lines: [{ xs, ys: up }], boxes: [], points: [], handle };
+  return { nodes: nodes.length > 0 ? [{ kind: 'group', clip, nodes, tag: '' }] : [], lines: [{ xs, ys: up }], boxes: [], points: [], paths: [], handle };
 }
 
 /**
@@ -226,7 +235,7 @@ export function drawSegments(a: SegmentsArtist, f: Frame, theme: Theme, k: numbe
       ? { kind: 'markers', shape: segs, xs: Float64Array.of(0), ys: Float64Array.of(f.Hg), ink: { kind: 'stroke', stroke } }
       : pathNode(segs, { kind: 'stroke', stroke }));
   }
-  return { nodes: nodes.length > 0 ? [{ kind: 'group', clip, nodes, tag: '' }] : [], lines: [], boxes: [], points: [], handle };
+  return { nodes: nodes.length > 0 ? [{ kind: 'group', clip, nodes, tag: '' }] : [], lines: [], boxes: [], points: [], paths: [], handle };
 }
 
 /** A Polygon patch: filled and/or stroked (miter joins, butt caps), snapped when rectilinear. */
@@ -241,7 +250,7 @@ export function drawPolygon(a: PolygonArtist, f: Frame, k: number, clip: Clip): 
   const lines = [{ xs, ys: up }];
   // an unfilled, open outline fills nothing (Patch fill=False)
   const ink = inkOf(a.closed ? a.face : { kind: 'none' }, stroke);
-  if (n === 0 || ink.kind === 'none') return { nodes: [], lines, boxes: [], points: [], handle };
+  if (n === 0 || ink.kind === 'none') return { nodes: [], lines, boxes: [], points: [], paths: [], handle };
   // Polygon(closed=True) appends the first vertex, which becomes the CLOSEPOLY
   const cx = a.closed ? Float64Array.of(...xs, xs[0]) : xs, cy = a.closed ? Float64Array.of(...ys, ys[0]) : ys;
   const off = stroke.kind === 'some' ? snapOffset(stroke.value.width) : 0;
@@ -249,7 +258,7 @@ export function drawPolygon(a: PolygonArtist, f: Frame, k: number, clip: Clip): 
   const fix = (v: number): number => (rect ? Math.floor(v + 0.5) + off : v);
   const segs: Seg[] = Array.from(xs, (x, i): Seg => [i === 0 ? 'M' : 'L', fix(x), fix(ys[i])]);
   if (a.closed) segs.push(['Z']);
-  return { nodes: [{ kind: 'group', clip, nodes: [pathNode(segs, ink.value, a.antialiased)], tag: '' }], lines, boxes: [], points: [], handle };
+  return { nodes: [{ kind: 'group', clip, nodes: [pathNode(segs, ink.value, a.antialiased)], tag: '' }], lines, boxes: [], points: [], paths: [], handle };
 }
 
 type Pending = { readonly x: number; readonly w: number; y: number; h: number; readonly i: number };
@@ -289,7 +298,7 @@ export function drawBar(a: BarArtist, f: Frame, k: number, clip: Clip, span: Spa
   span.setAttribute('emitted', kept.length);
   const rects = kept.flatMap((r) => { const ink = inkOf(a.faces[r.i], stroke); return ink.kind === 'some' ? [rectNode(r.x, r.y, r.w, r.h, ink.value)] : []; });
   const nodes: readonly Node[] = rects.length > 0 ? [{ kind: 'group', clip, nodes: rects, tag: '' }] : [];   // patches clip to the axes, as lines do
-  return { nodes, lines: [], boxes, points: [], handle: handleOf(a) };
+  return { nodes, lines: [], boxes, points: [], paths: [], handle: handleOf(a) };
 }
 
 /**
@@ -302,7 +311,7 @@ export function drawFill(a: FillArtist, f: Frame, k: number, clip: Clip): Drawn 
   // GraphicsContext defaults for collections: butt caps, round joins
   const stroke: Option<Stroke> = a.edge.kind === 'on' && a.edge.widthPt > 0 ? some({ color: a.edge.color, width: strokePx(a.edge.widthPt, k), cap: 'butt', join: 'round', dash: { kind: 'solid' } }) : none;
   const ink = inkOf(a.face, stroke);
-  if (n === 0 || ink.kind === 'none') return { nodes: [], lines: [], boxes: [], points: [], handle };
+  if (n === 0 || ink.kind === 'none') return { nodes: [], lines: [], boxes: [], points: [], paths: [], handle };
   // Two code paths in Collection.draw. With edges (a single edge color), the single-path
   // optimization draws the polygon with draw_markers: one "marker" at offset (0, 0), which Agg
   // places at pixel (0, H), its path shifted by (0.5, 0.5) since a curvy polygon doesn't snap.
@@ -331,7 +340,7 @@ export function drawFill(a: FillArtist, f: Frame, k: number, clip: Clip): Drawn 
   const node: Node = asMarker
     ? { kind: 'markers', shape: segs, xs: Float64Array.of(0), ys: Float64Array.of(f.Hg), ink: ink.value }
     : { kind: 'path', segs, ink: ink.value, antialiased: true };
-  return { nodes: [{ kind: 'group', clip, nodes: [node], tag: '' }], lines: [{ xs, ys: up }], boxes: [], points: [], handle };
+  return { nodes: [{ kind: 'group', clip, nodes: [node], tag: '' }], lines: [{ xs, ys: up }], boxes: [], points: [], paths: [], handle };
 }
 
 /** ax.text: position through transData or transAxes (Python-side, then flipped), laid out like Text. */
@@ -340,11 +349,54 @@ export function drawText(a: TextArtist, f: Frame, dpi: number, face: Face): Draw
   const x = a.coords === 'data' ? tx(f, a.x) : a.x * f.box.w + f.box.x0;
   const y = a.coords === 'data' ? tyText(f, a.y) : a.y * -f.box.h + (f.H - f.box.b);
   const layout = measure(a.text, a.sizePt, dpi, face, a.ha);
-  const nodes = a.text === '' ? [] : labelNodes(placeLayout(layout, x, y, { kind: 'horizontal', ha: a.ha, va: a.va }), k, a.color);
+  const placed = placeLayout(layout, x, y, a.rotation === 0 ? { kind: 'horizontal', ha: a.ha, va: a.va } : { kind: 'angled', deg: a.rotation, ha: a.ha, va: a.va });
+  const nodes = a.text === '' ? [] : labelNodes(placed, k, a.color);
   // Legend._auto_legend_data: every Text child's window extent is a loc='best' obstacle (an empty one is a point)
   const yUp = a.coords === 'data' ? forward(f.yscale, a.y) * f.ay + f.cy : a.y * f.box.h + f.box.b;
-  const extent = a.text === '' ? { x0: x, y0: yUp, x1: x, y1: yUp } : windowExtent(layout, x, yUp, a.ha, a.va);
-  return { nodes, lines: [], boxes: [extent], points: [], handle: none };
+  const extent = a.text === '' ? { x0: x, y0: yUp, x1: x, y1: yUp }
+    : a.rotation === 0 ? windowExtent(layout, x, yUp, a.ha, a.va)
+      : { x0: placed.x0, x1: placed.x1, y0: f.H - placed.y1, y1: f.H - placed.y0 };   // the rotated box, flipped as text is
+  return { nodes, lines: [], boxes: [extent], points: [], paths: [], handle: none };
+}
+
+/**
+ * A Wedge (or its Shadow) through Patch.draw: the path's vertices go through the data affine (for a Shadow composed
+ * with its translation: c' = a·(o·dpi/72) + c, as np.dot composes the two matrices), flipped as Agg does. A filled
+ * path is neither clipped nor snapped (it has curves). loc='best' sees it as a path: Bézier segments flattened in
+ * display space (path_intersects_rectangle's conv_curve), every vertex in order, the CLOSEPOLY one included.
+ */
+export function drawWedge(a: WedgeArtist, f: Frame, k: number, clip: Clip): Drawn {
+  const handle = handleOf(a);
+  const p = wedgePath(a.cx, a.cy, a.r, a.theta1, a.theta2, a.width);
+  const dpi = k * 72;
+  const sx = a.shift.kind === 'some' ? (a.shift.value.oxPt * dpi) / 72 : 0, sy = a.shift.kind === 'some' ? (a.shift.value.oyPt * dpi) / 72 : 0;
+  const cx = a.shift.kind === 'some' ? f.ax * sx + f.cx : f.cx, cy = a.shift.kind === 'some' ? f.ay * sy + f.cy : f.cy;
+  const X = forwardAll(f.xscale, p.xs), Y = forwardAll(f.yscale, p.ys);
+  const n = X.length;
+  const segs: Seg[] = [], up: Seg[] = [];
+  for (let i = 0; i < n; i++) {
+    const code = p.codes[i];
+    const x = X[i] * f.ax + cx, y = Y[i] * -f.ay + (f.Hg - cy), yu = Y[i] * f.ay + cy;
+    if (code === MOVETO) { segs.push(['M', x, y]); up.push(['M', x, yu]); }
+    else if (code === LINETO) { segs.push(['L', x, y]); up.push(['L', x, yu]); }
+    else if (code === CLOSEPOLY) { segs.push(['Z']); up.push(['L', x, yu]); }
+    else if (code === CURVE4) {
+      const x2 = X[i + 1] * f.ax + cx, y2 = Y[i + 1] * -f.ay + (f.Hg - cy), x3 = X[i + 2] * f.ax + cx, y3 = Y[i + 2] * -f.ay + (f.Hg - cy);
+      segs.push(['C', x, y, x2, y2, x3, y3]);
+      up.push(['C', x, yu, x2, Y[i + 1] * f.ay + cy, x3, Y[i + 2] * f.ay + cy]);
+      i += 2;
+    } else throw new Error(`wedge: unexpected path code ${code}`);
+  }
+  // _find_best_position: count_contains(path.vertices) (every vertex, control points and CLOSEPOLY's too) plus
+  // path.intersects_bbox, which walks the curve-flattened path with its subpaths joined end to end
+  const flat = flatten(up, 0, 0);
+  const paths: XY[] = [{ xs: Float64Array.from(flat.flatMap((s) => s.xs)), ys: Float64Array.from(flat.flatMap((s) => s.ys)) }];
+  const points: XY[] = [{ xs: Float64Array.from(X, (v) => v * f.ax + cx), ys: Float64Array.from(Y, (v) => v * f.ay + cy) }];
+  const stroke: Option<Stroke> = a.edge.kind === 'on' && a.edge.widthPt > 0
+    ? some({ color: a.edge.color, width: strokePx(a.edge.widthPt, k), cap: 'butt', join: 'miter', dash: { kind: 'solid' } }) : none;
+  const ink = inkOf(a.face, stroke);
+  if (ink.kind === 'none') return { nodes: [], lines: [], boxes: [], points, paths, handle };
+  return { nodes: [{ kind: 'group', clip, nodes: [pathNode(segs, ink.value)], tag: '' }], lines: [], boxes: [], points, paths, handle };
 }
 
 /** ax.annotate: Annotation.draw draws its FancyArrowPatch (ArrowStyle.Simple via the YAArrow emulation), then the text. */
@@ -365,7 +417,7 @@ export function drawAnnotation(a: AnnotationArtist, f: Frame, W: number, dpi: nu
   // Annotation._check_xy (annotation_clip None): with xycoords the string 'data' (not a pair), an annotation draws only
   // while xy is inside the axes (and get_window_extent is then Bbox.unit(), which loc='best' still counts)
   if (!a.xycoords.pair && a.xycoords.x.kind === 'data' && !(xyUp[0] >= f.box.x0 && xyUp[0] <= f.box.x1 && xyUp[1] >= f.box.b && xyUp[1] <= f.box.t)) {
-    return { nodes: [], lines: [], boxes: [{ x0: 0, y0: 0, x1: 1, y1: 1 }], points: [], handle: none };
+    return { nodes: [], lines: [], boxes: [{ x0: 0, y0: 0, x1: 1, y1: 1 }], points: [], paths: [], handle: none };
   }
   const x1 = textUp[0], y1 = f.H - textUp[1];
   const face = resolveFace(theme.font.families, a.weight);
@@ -411,14 +463,14 @@ export function drawAnnotation(a: AnnotationArtist, f: Frame, W: number, dpi: nu
   const nodes: readonly Node[] = [{ kind: 'group', clip, nodes: [...arrowNodes, ...textNodes], tag: '' }];
   // Annotation.get_window_extent: Bbox.union of the text's and the arrow patch's, a loc='best' obstacle like any Text
   const union: Box = { x0: Math.min(...extent.map((b) => b.x0)), y0: Math.min(...extent.map((b) => b.y0)), x1: Math.max(...extent.map((b) => b.x1)), y1: Math.max(...extent.map((b) => b.y1)) };
-  return { nodes, lines: [], boxes: [union], points: [], handle: none };
+  return { nodes, lines: [], boxes: [union], points: [], paths: [], handle: none };
 }
 
 /** ax.scatter: markers-only collection with sizes in pt^2. */
 export function drawScatter(a: ScatterArtist, f: Frame, _theme: Theme, k: number, clip: Clip): Drawn {
   const n = Math.min(a.x.length, a.y.length);
   const handle = handleOf(a);
-  if (n === 0) return { nodes: [], lines: [], boxes: [], points: [], handle };
+  if (n === 0) return { nodes: [], lines: [], boxes: [], points: [], paths: [], handle };
   const xs = new Float64Array(n), ys = new Float64Array(n);
   for (let i = 0; i < n; i++) { xs[i] = tx(f, a.x[i]); ys[i] = ty(f, a.y[i]); }
   const c = a.collection;
@@ -426,7 +478,7 @@ export function drawScatter(a: ScatterArtist, f: Frame, _theme: Theme, k: number
   // Legend._auto_legend_data: a Collection's offsets in display space count toward loc='best' (each point inside the box)
   const up = transform(a.x.subarray(0, n), a.y.subarray(0, n), DATA_COORDS, f);
   const out: readonly Node[] = nodes.length > 0 ? [{ kind: 'group', clip, nodes, tag: '' }] : [];
-  return { nodes: out, lines: [], boxes: [], points: [{ xs: up.xs, ys: up.ysUp }], handle };
+  return { nodes: out, lines: [], boxes: [], points: [{ xs: up.xs, ys: up.ysUp }], paths: [], handle };
 }
 
 /** Collection.draw's lengths: a lone 'none' colour is to_rgba_array's empty array. */
@@ -521,7 +573,7 @@ function snapRectilinear(segs: readonly Seg[], off: number): readonly Seg[] {
 export function drawSpan(a: SpanArtist, f: Frame, k: number, clip: Clip): Drawn {
   const stroke: Option<Stroke> = a.edge.kind === 'on' && a.edge.widthPt > 0 ? some({ color: a.edge.color, width: strokePx(a.edge.widthPt, k), cap: 'butt', join: 'miter', dash: { kind: 'solid' } }) : none;
   const ink = inkOf(a.face, stroke);
-  if (ink.kind === 'none') return { nodes: [], lines: [], boxes: [], points: [], handle: handleOf(a) };
+  if (ink.kind === 'none') return { nodes: [], lines: [], boxes: [], points: [], paths: [], handle: handleOf(a) };
   const off = stroke.kind === 'some' ? snapOffset(stroke.value.width) : 0;
   const sn = (v: number): number => (f.snap ? Math.floor(v + 0.5) + off : v);
   if (a.orientation === 'vertical') {
@@ -530,14 +582,14 @@ export function drawSpan(a: SpanArtist, f: Frame, k: number, clip: Clip): Drawn 
     const X0 = sn(Math.min(x0, x1)), X1 = sn(Math.max(x0, x1));
     const Y0 = sn(Math.min(y0, y1)), Y1 = sn(Math.max(y0, y1));
     const rect = rectNode(X0, Y0, X1 - X0, Y1 - Y0, ink.value);
-    return { nodes: [{ kind: 'group', clip, nodes: [rect], tag: '' }], lines: [], boxes: [], points: [], handle: handleOf(a) };
+    return { nodes: [{ kind: 'group', clip, nodes: [rect], tag: '' }], lines: [], boxes: [], points: [], paths: [], handle: handleOf(a) };
   } else {
     const y0 = ty(f, a.a0), y1 = ty(f, a.a1);
     const x0 = a.f0 * f.box.w + f.box.x0, x1 = a.f1 * f.box.w + f.box.x0;
     const X0 = sn(Math.min(x0, x1)), X1 = sn(Math.max(x0, x1));
     const Y0 = sn(Math.min(y0, y1)), Y1 = sn(Math.max(y0, y1));
     const rect = rectNode(X0, Y0, X1 - X0, Y1 - Y0, ink.value);
-    return { nodes: [{ kind: 'group', clip, nodes: [rect], tag: '' }], lines: [], boxes: [], points: [], handle: handleOf(a) };
+    return { nodes: [{ kind: 'group', clip, nodes: [rect], tag: '' }], lines: [], boxes: [], points: [], paths: [], handle: handleOf(a) };
   }
 }
 
@@ -545,7 +597,7 @@ export function drawSpan(a: SpanArtist, f: Frame, k: number, clip: Clip): Drawn 
 export function drawImage(a: ImageArtist, f: Frame, clip: Clip): Drawn {
   const handle = handleOf(a);
   const cmapR = getColormap(a.cmapName);
-  if (!cmapR.ok) return { nodes: [], lines: [], boxes: [], points: [], handle };
+  if (!cmapR.ok) return { nodes: [], lines: [], boxes: [], points: [], paths: [], handle };
   const cmap = cmapR.value;
   const norm0 = a.normKind === 'log' ? logNorm(a.vmin, a.vmax) : normalize(a.vmin, a.vmax);
   const norm = autoscaleNorm(norm0, a.values);
@@ -556,7 +608,7 @@ export function drawImage(a: ImageArtist, f: Frame, clip: Clip): Drawn {
   const x0 = Math.floor(dx0 + 0.5), x1 = Math.floor(dx1 + 0.5 + 1e-8);
   const y0 = Math.floor(dy0 + 0.5), y1 = Math.floor(dy1 + 0.5 + 1e-8);
   const outW = Math.max(0, x1 - x0), outH = Math.max(0, y1 - y0);
-  if (outW === 0 || outH === 0) return { nodes: [], lines: [], boxes: [], points: [], handle };
+  if (outW === 0 || outH === 0) return { nodes: [], lines: [], boxes: [], points: [], paths: [], handle };
   const dispW = Math.abs(dx1 - dx0), dispH = Math.abs(dy1 - dy0);
   const mode = resolveInterp(a.interpolation, a.cols, a.rows, dispW, dispH);
 
@@ -597,7 +649,7 @@ export function drawImage(a: ImageArtist, f: Frame, clip: Clip): Drawn {
       }
     }
     const nodeRgb: Node = { kind: 'image', x: x0, y: y0, w: outW, h: outH, rgba };
-    return { nodes: [{ kind: 'group', clip, nodes: [nodeRgb], tag: '' }], lines: [], boxes: [], points: [], handle };
+    return { nodes: [{ kind: 'group', clip, nodes: [nodeRgb], tag: '' }], lines: [], boxes: [], points: [], paths: [], handle };
   }
 
   if (mode === 'nearest') {
@@ -687,5 +739,5 @@ export function drawImage(a: ImageArtist, f: Frame, clip: Clip): Drawn {
     throw new UnsupportedInterpolationError(String(mode), 'not implemented');
   }
   const node: Node = { kind: 'image', x: x0, y: y0, w: outW, h: outH, rgba };
-  return { nodes: [{ kind: 'group', clip, nodes: [node], tag: '' }], lines: [], boxes: [], points: [], handle };
+  return { nodes: [{ kind: 'group', clip, nodes: [node], tag: '' }], lines: [], boxes: [], points: [], paths: [], handle };
 }

@@ -290,6 +290,12 @@ boxplot(x, { notch, vert, orientation, whis, positions, widths, patch_artist, sh
 
 Keyword arguments (unknown keys throw): `bootstrap`, `usermedians`, `conf_intervals`, `capwidths`, `sym`, `whis`, `notch`, `vert`, `orientation`, `patch_artist`, `showmeans`, `meanline`, `showcaps`, `showbox`, `showfliers`, `manage_ticks`, `autorange`, `zorder`, `clip_on | clipon | clip`, `tick_labels | labels`, `positions`, `widths`, `boxprops`, `whiskerprops`, `capprops`, `flierprops`, `medianprops`, `meanprops`, `label`
 
+### `Axes.pie(xRaw, kwargs?)`
+
+pie(x, { labels, colors, autopct, explode, startangle, counterclock, shadow, radius, labeldistance, pctdistance, wedgeprops, textprops, center, rotatelabels, normalize, frame }) — Axes.pie: one Wedge per value, counterclockwise from the x axis by default, fractions x / sum(x) (normalize=false keeps x and draws a partial pie, sum(x) ≤ 1). labels sit at labeldistance·radius (null: no label texts, the wedges still carry them to legend()), autopct (a printf format such as '%1.1f%%', or a function of the percentage) at pctdistance·radius. explode offsets wedge i by explode[i] along its bisector (data units, unscaled by radius, as in matplotlib); shadow (true, or { ox, oy, shade }) adds a darkened Shadow patch under every wedge; wedgeprops { width, edgecolor|ec, linewidth|lw, facecolor|fc, alpha } style the wedges (width makes a donut); textprops { fontsize|size, color|c, fontweight|weight } every text. Sets the aspect to 'equal', hides the frame and ticks and fixes both limits to center ± 1.25. frame=true and hatch are not supported (they throw). Returns { wedges, texts, autotexts, values, fracs }; texts is empty when labeldistance is null, autotexts when autopct is absent.
+
+Keyword arguments (unknown keys throw): `explode`, `labels`, `colors`, `autopct`, `pctdistance`, `labeldistance`, `shadow`, `startangle`, `radius`, `counterclock`, `wedgeprops`, `textprops`, `center`, `frame`, `rotatelabels`, `normalize`, `hatch`
+
 ### `Axes.bar(x, height, kwargs?)`
 
 bar(x, height, { width, bottom, align, color|facecolor|fc, edgecolor|ec, linewidth|lw, alpha, label, clip_on }) — vertical bars.

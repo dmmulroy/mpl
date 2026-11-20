@@ -1,0 +1,150 @@
+{
+ "spec": [
+  [
+   "pie",
+   [
+    [
+     10,
+     20,
+     30,
+     25,
+     15
+    ]
+   ],
+   {
+    "labels": [
+     "north",
+     "east-ish",
+     "south",
+     "west",
+     "last"
+    ],
+    "counterclock": false,
+    "rotatelabels": true,
+    "startangle": 45,
+    "labeldistance": 1.05
+   }
+  ]
+ ],
+ "style": null,
+ "rc": {},
+ "xlim": [
+  -1.25,
+  1.25
+ ],
+ "ylim": [
+  -1.25,
+  1.25
+ ],
+ "xticks": [],
+ "yticks": [],
+ "xticklabels": [],
+ "yticklabels": [],
+ "xoffset": "",
+ "yoffset": "",
+ "legend": null,
+ "x": {
+  "lim": [
+   -1.25,
+   1.25
+  ],
+  "ticks": [],
+  "labels": [],
+  "minor": [],
+  "minorlabels": [],
+  "offset": ""
+ },
+ "y": {
+  "lim": [
+   -1.25,
+   1.25
+  ],
+  "ticks": [],
+  "labels": [],
+  "minor": [],
+  "minorlabels": [],
+  "offset": ""
+ },
+ "axes": [
+  {
+   "xlim": [
+    -1.25,
+    1.25
+   ],
+   "ylim": [
+    -1.25,
+    1.25
+   ],
+   "xticks": [],
+   "yticks": [],
+   "xticklabels": [],
+   "yticklabels": [],
+   "xoffset": "",
+   "yoffset": "",
+   "legend": null,
+   "x": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   },
+   "y": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   }
+  }
+ ],
+ "figaxes": [
+  {
+   "xlim": [
+    -1.25,
+    1.25
+   ],
+   "ylim": [
+    -1.25,
+    1.25
+   ],
+   "xticks": [],
+   "yticks": [],
+   "xticklabels": [],
+   "yticklabels": [],
+   "xoffset": "",
+   "yoffset": "",
+   "legend": null,
+   "x": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   },
+   "y": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   }
+  }
+ ]
+}

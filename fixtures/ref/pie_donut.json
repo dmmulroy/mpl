@@ -1,0 +1,159 @@
+{
+ "spec": [
+  [
+   "pie",
+   [
+    [
+     30,
+     25,
+     20,
+     15,
+     10
+    ]
+   ],
+   {
+    "labels": [
+     "a",
+     "b",
+     "c",
+     "d",
+     "e"
+    ],
+    "autopct": "%.0f%%",
+    "pctdistance": 0.8,
+    "wedgeprops": {
+     "width": 0.4,
+     "edgecolor": "w",
+     "linewidth": 2
+    },
+    "startangle": 30,
+    "shadow": {
+     "ox": -0.04,
+     "oy": -0.03,
+     "shade": 0.5
+    }
+   }
+  ]
+ ],
+ "style": null,
+ "rc": {},
+ "xlim": [
+  -1.25,
+  1.25
+ ],
+ "ylim": [
+  -1.25,
+  1.25
+ ],
+ "xticks": [],
+ "yticks": [],
+ "xticklabels": [],
+ "yticklabels": [],
+ "xoffset": "",
+ "yoffset": "",
+ "legend": null,
+ "x": {
+  "lim": [
+   -1.25,
+   1.25
+  ],
+  "ticks": [],
+  "labels": [],
+  "minor": [],
+  "minorlabels": [],
+  "offset": ""
+ },
+ "y": {
+  "lim": [
+   -1.25,
+   1.25
+  ],
+  "ticks": [],
+  "labels": [],
+  "minor": [],
+  "minorlabels": [],
+  "offset": ""
+ },
+ "axes": [
+  {
+   "xlim": [
+    -1.25,
+    1.25
+   ],
+   "ylim": [
+    -1.25,
+    1.25
+   ],
+   "xticks": [],
+   "yticks": [],
+   "xticklabels": [],
+   "yticklabels": [],
+   "xoffset": "",
+   "yoffset": "",
+   "legend": null,
+   "x": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   },
+   "y": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   }
+  }
+ ],
+ "figaxes": [
+  {
+   "xlim": [
+    -1.25,
+    1.25
+   ],
+   "ylim": [
+    -1.25,
+    1.25
+   ],
+   "xticks": [],
+   "yticks": [],
+   "xticklabels": [],
+   "yticklabels": [],
+   "xoffset": "",
+   "yoffset": "",
+   "legend": null,
+   "x": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   },
+   "y": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   }
+  }
+ ]
+}

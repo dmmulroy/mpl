@@ -2,6 +2,7 @@
 // each candidate box in O(cells touched) instead of O(vertices).
 //   badness(box) = #vertices strictly inside + #collection offsets strictly inside + #bboxes overlapping
 //                + #lines intersecting the box (vertex inside-or-on, or a segment crossing an edge)
+// `paths` are lines whose own vertices are not counted (a curved Patch's flattened outline: its raw vertices come as offsets).
 // Offsets (Legend._auto_legend_data's `offsets`) are counted like vertices but belong to no line.
 // Interior cells come from a prefix table; only boundary cells are tested exactly.
 import type { XY } from './path.ts';
@@ -28,11 +29,13 @@ const ok = (L: XY, i: number): boolean => Number.isFinite(L.xs[i]) && Number.isF
 const cellOf = (v: number, cell: number, n: number): number => Math.min(n - 1, Math.max(0, Math.floor(v / cell)));
 
 /** Pass 1 over one line: vertices per cell into vCount, segment-cell incidences (each segment's cell bbox) into sCount. */
-function countLine(L: XY, cols: number, rows: number, cell: number, vCount: Int32Array, sCount: Int32Array): void {
+function countLine(L: XY, cols: number, rows: number, cell: number, vCount: Int32Array, sCount: Int32Array, cCount: Int32Array, counted: boolean): void {
   const xs = L.xs, ys = L.ys;
   for (let i = 0; i < xs.length; i++) {
     if (!ok(L, i)) continue;
-    vCount[cellOf(ys[i], cell, rows) * cols + cellOf(xs[i], cell, cols)]++;
+    const c = cellOf(ys[i], cell, rows) * cols + cellOf(xs[i], cell, cols);
+    vCount[c]++;
+    if (counted) cCount[c]++;
     if (i > 0 && ok(L, i - 1)) {
       const ax0 = cellOf(Math.min(xs[i], xs[i - 1]), cell, cols), ax1 = cellOf(Math.max(xs[i], xs[i - 1]), cell, cols);
       const ay0 = cellOf(Math.min(ys[i], ys[i - 1]), cell, rows), ay1 = cellOf(Math.max(ys[i], ys[i - 1]), cell, rows);
@@ -59,14 +62,16 @@ function fillLine(L: XY, li: number, cols: number, rows: number, cell: number, v
 
 // The build passes are module functions, not closures made per call, so V8 keeps their feedback and optimized
 // code from one legend to the next (a cold render builds one index per legend, twice with tight_layout).
-export function buildObstacleIndex(lines: readonly XY[], points: readonly XY[], bboxes: readonly Box[], W: number, H: number, cell: number): ObstacleIndex {
+export function buildObstacleIndex(counted: readonly XY[], points: readonly XY[], bboxes: readonly Box[], W: number, H: number, cell: number,
+                                   paths: readonly XY[] = []): ObstacleIndex {
   const cols = Math.max(1, Math.ceil(W / cell)), rows = Math.max(1, Math.ceil(H / cell));
   const nCells = cols * rows;
+  const lines = paths.length === 0 ? counted : [...counted, ...paths], nCounted = counted.length;
 
-  // pass 1: counts
-  const vCount = new Int32Array(nCells), sCount = new Int32Array(nCells);
-  for (const L of lines) countLine(L, cols, rows, cell, vCount, sCount);
-  for (const P of points) for (let i = 0; i < P.xs.length; i++) if (ok(P, i)) vCount[cellOf(P.ys[i], cell, rows) * cols + cellOf(P.xs[i], cell, cols)]++;
+  // pass 1: counts (vCount: every vertex, for the layout; cCount: the ones badness counts)
+  const vCount = new Int32Array(nCells), sCount = new Int32Array(nCells), cCount = new Int32Array(nCells);
+  for (let li = 0; li < lines.length; li++) countLine(lines[li], cols, rows, cell, vCount, sCount, cCount, li < nCounted);
+  for (const P of points) for (let i = 0; i < P.xs.length; i++) if (ok(P, i)) { const c = cellOf(P.ys[i], cell, rows) * cols + cellOf(P.xs[i], cell, cols); vCount[c]++; cCount[c]++; }
   // CSR layout
   const vStart = new Int32Array(nCells + 1), sStart = new Int32Array(nCells + 1);
   for (let c = 0; c < nCells; c++) { vStart[c + 1] = vStart[c] + vCount[c]; sStart[c + 1] = sStart[c] + sCount[c]; }
@@ -86,7 +91,7 @@ export function buildObstacleIndex(lines: readonly XY[], points: readonly XY[], 
   const W1 = cols + 1;
   const pre = new Int32Array(W1 * (rows + 1));
   for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
-    pre[(y + 1) * W1 + x + 1] = vCount[y * cols + x] + pre[y * W1 + x + 1] + pre[(y + 1) * W1 + x] - pre[y * W1 + x];
+    pre[(y + 1) * W1 + x + 1] = cCount[y * cols + x] + pre[y * W1 + x + 1] + pre[(y + 1) * W1 + x] - pre[y * W1 + x];
   }
   const rectSum = (x0: number, y0: number, x1: number, y1: number): number =>
     pre[(y1 + 1) * W1 + x1 + 1] - pre[y0 * W1 + x1 + 1] - pre[(y1 + 1) * W1 + x0] + pre[y0 * W1 + x0];
@@ -119,7 +124,7 @@ export function buildObstacleIndex(lines: readonly XY[], points: readonly XY[], 
       for (let k = vStart[c]; k < vStart[c + 1]; k++) {
         const px = vX[k], py = vY[k];
         const li = vLine[k];
-        if (box.x0 < px && px < box.x1 && box.y0 < py && py < box.y1) { b++; if (li >= 0) hit[li] = 1; if (b >= limit) return b; }
+        if (box.x0 < px && px < box.x1 && box.y0 < py && py < box.y1) { if (li < nCounted) b++; if (li >= 0) hit[li] = 1; if (b >= limit) return b; }
         else if (li >= 0 && box.x0 <= px && px <= box.x1 && box.y0 <= py && py <= box.y1) hit[li] = 1;
       }
     }

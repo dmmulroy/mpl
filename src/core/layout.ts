@@ -5,7 +5,7 @@ import { dataExtents, unionExtent, viewLimits } from './autoscale.ts';
 import type { AxisDrawn, Sides, UpEdges } from './draw-axis.ts';
 import { drawAxis, labelNodes } from './draw-axis.ts';
 import type { Drawn } from './draw-artists.ts';
-import { drawAxLine, drawBar, drawFill, drawLine, drawPolygon, drawSegments, drawText, drawScatter, drawSpan, drawAnnotation, drawImage, handleOf } from './draw-artists.ts';
+import { drawAxLine, drawBar, drawFill, drawLine, drawPolygon, drawSegments, drawText, drawScatter, drawSpan, drawAnnotation, drawImage, drawWedge, handleOf } from './draw-artists.ts';
 import type { Frame } from './frame.ts';
 import { axesBox, frame, geomHeight } from './frame.ts';
 import type { Device } from './frame.ts';
@@ -101,9 +101,10 @@ function drawArtist(a: Artist, f: Frame, theme: Theme, k: number, clip: Clip, tr
       case 'axline': return tracer.span('artist.axline', { through: a.through.kind }, (sp) => drawAxLine(a, f, theme, k, clip, sp));
       case 'segments': return tracer.span('artist.segments', { segments: a.x0.length }, () => drawSegments(a, f, theme, k, clip));
       case 'polygon': return tracer.span('artist.polygon', { vertices: a.x.length, closed: a.closed }, () => drawPolygon(a, f, k, clip));
-      case 'sticky': return { nodes: [], lines: [], boxes: [], points: [], handle: none };
+      case 'sticky': return { nodes: [], lines: [], boxes: [], points: [], paths: [], handle: none };
+      case 'wedge': return tracer.span('artist.wedge', { theta1: a.theta1, theta2: a.theta2, shadow: a.shift.kind === 'some' }, () => drawWedge(a, f, k, clip));
       case 'image': return tracer.span('artist.image', { rows: a.rows, cols: a.cols }, () => drawImage(a, f, clip));
-      case 'errorbar': return { nodes: [], lines: [], boxes: [], points: [], handle: handleOf(a) };
+      case 'errorbar': return { nodes: [], lines: [], boxes: [], points: [], paths: [], handle: handleOf(a) };
       default: return assertNever(a);
     }
   }
@@ -115,7 +116,7 @@ function zorder(a: Artist): number {
     case 'bar': case 'fill': case 'span': return 1;
     case 'scatter': case 'image': return a.zorder;
     case 'axline': return 2;
-    case 'line': case 'segments': case 'polygon': return a.zorder;
+    case 'line': case 'segments': case 'polygon': case 'wedge': return a.zorder;
     case 'text': case 'annotation': case 'errorbar': return 3;
     case 'sticky': return 0;
     default: return assertNever(a);
@@ -135,7 +136,7 @@ function legendEntries(ax: AxesSpec, drawn: readonly Drawn[]): readonly Sourced[
     const e: Sourced = { entry: { label: a.label.text, handle: h.value }, artist: i };
     switch (a.kind) {
       // Line2D, patches and collections are Axes children; hist's labelled bar is a child Rectangle
-      case 'line': case 'fill': case 'scatter': case 'axline': case 'segments': case 'polygon': children.push(e); break;
+      case 'line': case 'fill': case 'scatter': case 'axline': case 'segments': case 'polygon': case 'wedge': children.push(e); break;
       case 'bar': (a.legend === 'child' ? children : containers).push(e); break;
       case 'span': case 'errorbar': case 'image': containers.push(e); break;
       case 'sticky': break;
@@ -476,12 +477,13 @@ function layoutAxes(inp: AxesIn, fig: FigureSpec, mode: LayoutMode, dev: Device,
   const f = frame(box, W, H, dev, xlim, ylim, xs, ys);
   const clip: Clip = { kind: 'rect', x: box.x0, y: box.yTopG, w: box.w, h: box.h };
 
-  const face = roles.patch ? inkOf(theme.axes.face, none) : none;
+  // _AxesBase.draw: the axes patch and the spines draw only when the frame is on (set_frame_on)
+  const face = roles.patch && ax.frameOn ? inkOf(theme.axes.face, none) : none;
   // The axes patch is a rectilinear, edgeless path: Agg snaps its corners to whole pixels (snap value 0).
   // (matplotlib's SVG backend draws it unsnapped)
   const bx0 = snapIf(f.snap, box.x0, 0), bx1 = snapIf(f.snap, box.x1, 0), by0 = snapIf(f.snap, box.yTopG, 0), by1 = snapIf(f.snap, box.yBotG, 0);
   const background: readonly Node[] = face.kind === 'some' ? [rectNode(bx0, by0, bx1 - bx0, by1 - by0, face.value)] : [];
-  const undrawn = (): readonly Drawn[] => ax.artists.map((a): Drawn => ({ nodes: [], lines: [], boxes: [], points: [], handle: handleOf(a) }));
+  const undrawn = (): readonly Drawn[] => ax.artists.map((a): Drawn => ({ nodes: [], lines: [], boxes: [], points: [], paths: [], handle: handleOf(a) }));
   const needArtists = mode === 'scene' || (ax.legend.kind === 'on' && ax.legend.loc.kind === 'best' && legendEntries(ax, undrawn()).length > 0);
   const drawn = needArtists ? tracer.span('artists', { count: ax.artists.length }, () => drawArtists(ax, f, theme, k, clip, tracer)) : undrawn();
   const userTexts = drawn.flatMap((d, i) => (zorder(ax.artists[i]) === 3 ? d.nodes : []));
@@ -505,7 +507,7 @@ function layoutAxes(inp: AxesIn, fig: FigureSpec, mode: LayoutMode, dev: Device,
   const spec = ax.legend;
   const legend = spec.kind === 'on' && entries.length > 0
     ? some({ code: spec.loc, out: tracer.span('legend', { entries: entries.length }, () => layoutLegend({
-        entries, theme, dpi, W, H, Hg, snap: f.snap, axesBox: axesUp, lines: drawn.flatMap((d) => d.lines), points: drawn.flatMap((d) => d.points), boxes: drawn.flatMap((d) => d.boxes),
+        entries, theme, dpi, W, H, Hg, snap: f.snap, axesBox: axesUp, lines: drawn.flatMap((d) => d.lines), points: drawn.flatMap((d) => d.points), paths: drawn.flatMap((d) => d.paths), boxes: drawn.flatMap((d) => d.boxes),
         loc: spec.loc, ncols: spec.ncols, frame: spec.frame, fontSizePt: spec.fontSizePt, markers: spec.markers }, tracer)) })
     : none;
 
@@ -515,7 +517,7 @@ function layoutAxes(inp: AxesIn, fig: FigureSpec, mode: LayoutMode, dev: Device,
   // stable and ties keep matplotlib's get_children order (children, spines, then the axes), which
   // matters for axisbelow=False: the axis (2.5) then draws over the spines (2.5).
   const layers: ReadonlyArray<readonly [number, readonly Node[]]> = [
-    ...artistLayers, [2.5, spinesForAxes(ax, theme, f, k)],
+    ...artistLayers, [2.5, ax.frameOn ? spinesForAxes(ax, theme, f, k) : []],
     // Axis.draw: gridlines, ticks and tick labels, then the offset text and the axis label
     [axisZ(theme.axes.axisBelow), [...clipped(xa.grid), ...xa.marks, ...deco.x, ...clipped(ya.grid), ...ya.marks, ...deco.y]],
     [3, [...userTexts, ...deco.title]], [5, legend.kind === 'some' ? legend.value.out.nodes : []],
@@ -541,7 +543,8 @@ function layoutAxes(inp: AxesIn, fig: FigureSpec, mode: LayoutMode, dev: Device,
           ...ya.nearBoxes.map((bx, i) => ({ box: bx, up: ya.nearUp[i] })), ...ya.farBoxes.map((bx, i) => ({ box: bx, up: ya.farUp[i] })),
           ...deco.boxes.y.map(flip(H))] : []),
         ...deco.boxes.titles,
-        ...spineBoxes(ax, roles, f, k, xt, yt).map(flip(H)),
+        // get_default_bbox_extra_artists drops the spines when the frame is off
+        ...(ax.frameOn ? spineBoxes(ax, roles, f, k, xt, yt).map(flip(H)) : []),
         ...(legend.kind === 'some' ? [{ box: { x0: legend.value.out.box.x0, x1: legend.value.out.box.x1, y0: H - legend.value.out.box.y1, y1: H - legend.value.out.box.y0 },
                                         up: { b: legend.value.out.box.y0, t: legend.value.out.box.y1 } }] : []),
       ]),

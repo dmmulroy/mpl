@@ -1,0 +1,197 @@
+{
+ "spec": [
+  [
+   "pie",
+   [
+    [
+     15,
+     30,
+     45,
+     10
+    ]
+   ],
+   {
+    "labels": [
+     "Frogs",
+     "Hogs",
+     "Dogs",
+     "Logs"
+    ],
+    "autopct": "%d%%",
+    "textprops": {
+     "color": "w",
+     "fontsize": 9
+    }
+   }
+  ],
+  [
+   "legend",
+   [],
+   {}
+  ],
+  [
+   "set_title",
+   [
+    "with a legend"
+   ],
+   {}
+  ]
+ ],
+ "style": null,
+ "rc": {},
+ "xlim": [
+  -1.25,
+  1.25
+ ],
+ "ylim": [
+  -1.25,
+  1.25
+ ],
+ "xticks": [],
+ "yticks": [],
+ "xticklabels": [],
+ "yticklabels": [],
+ "xoffset": "",
+ "yoffset": "",
+ "legend": {
+  "loc": 0,
+  "x0": 418.9493055555555,
+  "x1": 505.8555555555555,
+  "top": 64.54444444444448,
+  "bottom": 152.04444444444448,
+  "texts": [
+   "Frogs",
+   "Hogs",
+   "Dogs",
+   "Logs"
+  ]
+ },
+ "x": {
+  "lim": [
+   -1.25,
+   1.25
+  ],
+  "ticks": [],
+  "labels": [],
+  "minor": [],
+  "minorlabels": [],
+  "offset": ""
+ },
+ "y": {
+  "lim": [
+   -1.25,
+   1.25
+  ],
+  "ticks": [],
+  "labels": [],
+  "minor": [],
+  "minorlabels": [],
+  "offset": ""
+ },
+ "axes": [
+  {
+   "xlim": [
+    -1.25,
+    1.25
+   ],
+   "ylim": [
+    -1.25,
+    1.25
+   ],
+   "xticks": [],
+   "yticks": [],
+   "xticklabels": [],
+   "yticklabels": [],
+   "xoffset": "",
+   "yoffset": "",
+   "legend": {
+    "loc": 0,
+    "x0": 418.9493055555555,
+    "x1": 505.8555555555555,
+    "top": 64.54444444444448,
+    "bottom": 152.04444444444448,
+    "texts": [
+     "Frogs",
+     "Hogs",
+     "Dogs",
+     "Logs"
+    ]
+   },
+   "x": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   },
+   "y": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   }
+  }
+ ],
+ "figaxes": [
+  {
+   "xlim": [
+    -1.25,
+    1.25
+   ],
+   "ylim": [
+    -1.25,
+    1.25
+   ],
+   "xticks": [],
+   "yticks": [],
+   "xticklabels": [],
+   "yticklabels": [],
+   "xoffset": "",
+   "yoffset": "",
+   "legend": {
+    "loc": 0,
+    "x0": 418.9493055555555,
+    "x1": 505.8555555555555,
+    "top": 64.54444444444448,
+    "bottom": 152.04444444444448,
+    "texts": [
+     "Frogs",
+     "Hogs",
+     "Dogs",
+     "Logs"
+    ]
+   },
+   "x": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   },
+   "y": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   }
+  }
+ ]
+}

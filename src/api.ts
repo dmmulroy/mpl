@@ -11,9 +11,11 @@ import { MARKERS } from './core/data/markers.ts';
 import type { Fmt, FmtShape } from './core/fmt.ts';
 import { dataExtents, unionExtent, viewLimits } from './core/autoscale.ts';
 import type { Bins, Sample } from './core/histogram.ts';
-import { BIN_ESTIMATORS, histTops } from './core/histogram.ts';
+import { BIN_ESTIMATORS, histTops, npSum } from './core/histogram.ts';
 import type { Whis } from './core/boxplot.ts';
 import { boxplotStats, parseWhis, reshapeBoxplotData } from './core/boxplot.ts';
+import type { PieLabelPos } from './core/pie.ts';
+import { pieLabelPos, pieWedges, pyPercentFormat } from './core/pie.ts';
 import { scaleOf } from './core/ticks.ts';
 import { parseFmt, parseLinestyle, parseMarker } from './core/fmt.ts';
 import type { AxesAnnot } from './core/layout.ts';
@@ -33,7 +35,7 @@ import { parseFontSize, parseLegendLoc, parseTheme, scatterPointsOf } from './co
 import type {
   AnnotationArrow,
   Artist, Aspect, AxesMeta, AxesTitle, AxesTitles, DateLocatorSpec, SpinePosition, AxesRole, AxesSpec, AxisSpec, BarArtist, FillArtist, HAlign, TextArtist, TextCoords, VAlign, BarEdge, FigureSpec, AxesGrid, AxisGrid, GridLines, GridWhich, Label, LabelSpec, LegendSpec, Limits,
-  AxLineArtist, AxLineThrough, Decimate, DrawStyle, ErrorbarArtist, ErrorbarHandle, LineCoords, PolygonArtist, SegmentsArtist, StickyArtist,
+  AxLineArtist, AxLineThrough, Decimate, DrawStyle, ErrorbarArtist, ErrorbarHandle, LineCoords, PolygonArtist, SegmentsArtist, StickyArtist, WedgeArtist,
   Cap, LineArtist, LineMarkers, LineStroke, LineStyle, MarkerName, Option, Orientation, Paint, Position, TightBox, Result, Rgb, Scale, Scene, Theme, TickSpec, TickGrid, TickLabelStyle, TickLabelStyles, ScatterArtist, ImageArtist, SpanArtist, TickTheme, AnnotationArtist, AnnotationCoords, AnnotationCoordPair,
 } from './core/types.ts';
 import { assertNever, err, none, ok, some, unwrap } from './core/types.ts';
@@ -365,6 +367,13 @@ export type BoxplotResult = {
   readonly means: readonly LineArtist[];
 };
 
+/** Axes.pie's PieContainer: the wedges, the label texts (none when labeldistance is null), the autopct texts (none
+ *  without autopct), the values as given and the fractions the wedges span. */
+export type PieResult = {
+  readonly wedges: readonly WedgeArtist[]; readonly texts: readonly TextArtist[]; readonly autotexts: readonly TextArtist[];
+  readonly values: Float64Array; readonly fracs: Float64Array;
+};
+
 /** ErrorbarContainer: (data_line, caplines, barlinecols) plus the legend artist. data_line is none for fmt='none'. */
 export type ErrorbarContainer = {
   readonly artist: ErrorbarArtist; readonly data_line: Option<LineArtist>; readonly caplines: readonly LineArtist[];
@@ -648,6 +657,8 @@ export class Axes {
   private boxAspect: Option<number> = none;
   /** Axes.set_anchor: (x, y) in [0,1] within the original position when box/data aspect shrinks it. */
   private anchorXY: readonly [number, number] = [0.5, 0.5];
+  /** set_frame_on: the axes patch and spines draw (pie with frame=False turns it off). */
+  private frameOn = true;
   /** Colorbar axes: hide the short-axis ticks and use a custom outline later. */
   /** True when this Axes is a colorbar cax. */
   colorbarMode = false;
@@ -1401,6 +1412,150 @@ export class Axes {
   }
 
 
+  /**
+   * pie(x, { labels, colors, autopct, explode, startangle, counterclock, shadow, radius, labeldistance, pctdistance,
+   * wedgeprops, textprops, center, rotatelabels, normalize, frame }) — Axes.pie: one Wedge per value, counterclockwise
+   * from the x axis by default, fractions x / sum(x) (normalize=false keeps x and draws a partial pie, sum(x) ≤ 1).
+   * labels sit at labeldistance·radius (null: no label texts, the wedges still carry them to legend()), autopct (a
+   * printf format such as '%1.1f%%', or a function of the percentage) at pctdistance·radius. explode offsets wedge i by
+   * explode[i] along its bisector (data units, unscaled by radius, as in matplotlib); shadow (true, or { ox, oy, shade }) adds a darkened Shadow patch under
+   * every wedge; wedgeprops { width, edgecolor|ec, linewidth|lw, facecolor|fc, alpha } style the wedges (width makes a
+   * donut); textprops { fontsize|size, color|c, fontweight|weight } every text. Sets the aspect to 'equal', hides the
+   * frame and ticks and fixes both limits to center ± 1.25. frame=true and hatch are not supported (they throw).
+   * Returns { wedges, texts, autotexts, values, fracs }; texts is empty when labeldistance is null, autotexts when
+   * autopct is absent.
+   */
+  pie(xRaw: unknown, kwargs: Kwargs = {}): PieResult {
+    const kw = new KwReader(kwargs, 'pie');
+    const cycle = this.theme.axes.cycle;
+    const explodeK = kw.read(['explode'], (v): Result<Option<Float64Array>> => {
+      const s = parseSeries(v, 'explode');
+      if (!s.ok) return s;
+      return s.value.kind === 'strings' ? err('explode must be numeric') : ok(some(s.value.values));
+    }, (): Option<Float64Array> => none);
+    const labelsK = kw.read(['labels'], (v): Result<Option<readonly string[]>> => (Array.isArray(v)
+      ? ok(some(v.map((l: unknown) => (isNullish(l) ? '' : str(l))))) : err('labels must be a list')), (): Option<readonly string[]> => none);
+    const colorsK = kw.read(['colors'], (v): Result<Option<readonly Paint[]>> => {
+      if (!Array.isArray(v) || v.length === 0) return err('colors must be a non-empty list of colors');
+      const out: Paint[] = [];
+      for (const c of v) { const p = this.paint(c); if (!p.ok) return p; out.push(p.value); }
+      return ok(some(out));
+    }, (): Option<readonly Paint[]> => none);
+    type Autopct = { readonly kind: 'none' } | { readonly kind: 'format'; readonly fmt: string } | { readonly kind: 'fn'; readonly fn: (pct: number) => unknown };
+    const autopct = kw.read(['autopct'], (v): Result<Autopct> => (typeof v === 'string' ? ok({ kind: 'format', fmt: v })
+      : typeof v === 'function' ? ok({ kind: 'fn', fn: (pct: number): unknown => Reflect.apply(v, globalThis, [pct]) })
+        : err('autopct must be callable or a format string')), (): Autopct => ({ kind: 'none' }));
+    const pctdistance = kw.read(['pctdistance'], num('pctdistance'), () => 0.6);
+    // labeldistance=None means "no label texts", so an explicit null is told apart before KwReader reads it as absent
+    const ldRaw = prop(kwargs, 'labeldistance');
+    const ldNone = ldRaw.kind === 'some' && isNullish(ldRaw.value);
+    const ldValue = kw.read(['labeldistance'], num('labeldistance'), () => 1.1);
+    const labeldistance: Option<number> = ldNone ? none : some(ldValue);
+    type Shadow = { readonly kind: 'off' } | { readonly kind: 'on'; readonly ox: number; readonly oy: number; readonly shade: number };
+    const shadow = kw.read(['shadow'], (v): Result<Shadow> => {
+      if (typeof v === 'boolean') return ok(v ? { kind: 'on', ox: -0.02, oy: -0.02, shade: 0.7 } : { kind: 'off' });
+      if (!isPlainObject(v)) return err('shadow must be a bool or a dict of Shadow properties');
+      const r = new KwReader(v, 'Shadow');
+      const ox = r.read(['ox'], num('ox'), () => -0.02), oy = r.read(['oy'], num('oy'), () => -0.02);
+      const shade = r.read(['shade'], num('shade'), () => 0.7);
+      r.done();
+      return shade >= 0 && shade <= 1 ? ok({ kind: 'on', ox, oy, shade }) : err('shade must be between 0 and 1.');
+    }, (): Shadow => ({ kind: 'off' }));
+    const startangle = kw.read(['startangle'], num('startangle'), () => 0);
+    const radius = kw.read(['radius'], (v): Result<number> => (typeof v === 'number' && Number.isFinite(v) && v > 0
+      ? ok(v) : err(`'radius' must be a positive number, not ${pyRepr(v)}`)), () => 1);
+    const counterclock = kw.read(['counterclock'], bool('counterclock'), () => true);
+    const wedgeprops = kw.read(['wedgeprops'], propsDict('wedgeprops'), (): Kwargs => ({}));
+    const textprops = kw.read(['textprops'], propsDict('textprops'), (): Kwargs => ({}));
+    const center = kw.read(['center'], (v): Result<readonly [number, number]> => (Array.isArray(v) && v.length === 2 && v.every((c) => typeof c === 'number' && Number.isFinite(c))
+      ? ok([Number(v[0]), Number(v[1])]) : err('center must be [x, y]')), (): readonly [number, number] => [0, 0]);
+    const frame = kw.read(['frame'], bool('frame'), () => false);
+    const rotatelabels = kw.read(['rotatelabels'], bool('rotatelabels'), () => false);
+    const normalize = kw.read(['normalize'], bool('normalize'), () => true);
+    const hatch = kw.get(['hatch']);
+    kw.done();
+    if (hatch.kind === 'some') throw new TypeError("pie() does not support 'hatch' in mpl");
+    if (frame) throw new TypeError('pie() does not support frame=True in mpl');
+
+    // Wedge.set(**wedgeprops) and Text.set(**textprops), parsed before anything is added
+    const wp = new KwReader(wedgeprops, 'Wedge.set');
+    const width = wp.read(['width'], (v): Result<Option<number>> => mapResult(num('width')(v), (w): Option<number> => some(w)), (): Option<number> => none);
+    const edgeK = wp.read(['edgecolor', 'ec'], (v) => mapResult(this.paint(v), (p): Option<Paint> => some(p)), (): Option<Paint> => none);
+    const faceK = wp.read(['facecolor', 'fc'], (v) => mapResult(this.paint(v), (p): Option<Paint> => some(p)), (): Option<Paint> => none);
+    const lw = wp.read(['linewidth', 'lw'], num('linewidth'), () => this.theme.patch.linewidthPt);
+    const alpha = wp.read(['alpha'], alphaOf, (): Option<number> => none);
+    wp.done();
+    const tp = new KwReader(textprops, 'Text.set');
+    const tSize = tp.read(['fontsize', 'size'], (v) => mapResult(parseFontSize(v, this.theme.font.sizePt), (s): Option<number> => some(s)), (): Option<number> => none);
+    const tColor = tp.read(['color', 'c'], (v) => mapResult(parseRgb(v, cycle), (c): Option<Rgb> => some(c)), (): Option<Rgb> => none);
+    const tWeight = tp.read(['fontweight', 'weight'], (v) => mapResult(weightOf(v), (w): Option<number> => some(w)), (): Option<number> => none);
+    tp.done();
+
+    const xs = unwrap(parseSeries(xRaw, 'x'));
+    if (xs.kind === 'strings') throw new TypeError('pie: x must be numeric');
+    const x = xs.values, n = x.length;
+    if (x.some((v) => v < 0)) throw new Error("Wedge sizes 'x' must be non negative values");
+    if (!x.every((v) => Number.isFinite(v))) throw new Error('Wedge sizes must be finite numbers');
+    const sum = npSum(x, isIntegerData(xRaw));
+    if (sum === 0) throw new Error('All wedge sizes are zero');
+    if (!normalize && sum > 1) throw new Error('Cannot plot an unnormalized pie with sum(x) > 1');
+    const fracs = normalize ? x.map((v) => v / sum) : x;
+    const labels = labelsK.kind === 'some' ? labelsK.value : Array.from({ length: n }, () => '');
+    const explode = explodeK.kind === 'some' ? explodeK.value : new Float64Array(n);
+    if (labels.length !== n) throw new Error(`'labels' must be of length 'x', not ${labels.length}`);
+    if (explode.length !== n) throw new Error(`'explode' must be of length 'x', not ${explode.length}`);
+
+    this.set_aspect('equal');
+    const forced: Paint = this.theme.patch.forceEdge ? { kind: 'solid', color: this.theme.patch.edge } : { kind: 'none' };
+    const geometry = pieWedges(fracs, explode, startangle, counterclock, center, radius);
+    const wedges: WedgeArtist[] = [];
+    geometry.forEach((g, i) => {
+      // Wedge(facecolor=get_next_color()) then set(**wedgeprops): the patch cycle advances even under a wedgeprops facecolor
+      const next: Paint = colorsK.kind === 'some' ? colorsK.value[i % colorsK.value.length] : { kind: 'solid', color: this.next('patch') };
+      const face = withAlphaOpt(faceK.kind === 'some' ? faceK.value : next, alpha);
+      const edge = edgeOf(withAlphaOpt(edgeK.kind === 'some' ? edgeK.value : forced, alpha), lw);
+      const lbl: Label = labels[i] === '' ? { kind: 'none' } : unwrap(label(labels[i]));
+      const w: WedgeArtist = { kind: 'wedge', cx: g.cx, cy: g.cy, r: g.r, theta1: g.theta1, theta2: g.theta2, width, face, edge, label: lbl, clip: false, zorder: 1, shift: none };
+      this.artists.push(w);
+      wedges.push(w);
+      if (shadow.kind === 'on') {
+        // Shadow(w): (1 − shade)·to_rgb(face) for face and edge, alpha 0.5, the wedge's linewidth, zorder nextafter(1, −inf)
+        const rgb = face.kind === 'solid' ? [1, 3, 5].map((j) => parseInt(face.color.hex.slice(j, j + 2), 16) / 255) : [0, 0, 0];
+        const dark = unwrap(parseRgb(rgb.map((c) => (1 - shadow.shade) * c), cycle));
+        const c: Rgb = { hex: dark.hex, alpha: 0.5 };
+        this.artists.push({ kind: 'wedge', cx: g.cx, cy: g.cy, r: g.r, theta1: g.theta1, theta2: g.theta2, width, face: { kind: 'solid', color: c },
+          edge: edgeOf({ kind: 'solid', color: c }, lw), label: { kind: 'none' }, clip: false, zorder: 1 - 2 ** -53, shift: some({ oxPt: shadow.ox, oyPt: shadow.oy }) });
+      }
+    });
+    const textAt = (s: string, at: PieLabelPos, sizePt: number): TextArtist => {
+      const t: TextArtist = {
+        kind: 'text', x: at.x, y: at.y, coords: 'data', text: s,
+        sizePt: tSize.kind === 'some' ? tSize.value : sizePt,
+        weight: tWeight.kind === 'some' ? tWeight.value : this.theme.font.weight,
+        color: tColor.kind === 'some' ? tColor.value : this.theme.text.color,
+        ha: at.ha, va: at.va, clip: false, rotation: at.rotation,
+      };
+      this.artists.push(t);
+      return t;
+    };
+    // pie_label(labels, distance=labeldistance, alignment='outer', rotate=rotatelabels) at xtick.labelsize
+    const texts = labeldistance.kind === 'some'
+      ? geometry.map((g, i) => textAt(labels[i], pieLabelPos(g, labeldistance.value, 'outer', rotatelabels), this.theme.xtick.labelSizePt)) : [];
+    // pie_label(autopct % (100·frac), distance=pctdistance, alignment='center') at font.size
+    const autotexts = autopct.kind === 'none' ? [] : geometry.map((g, i) => {
+      const pct = 100.0 * fracs[i];
+      const s = autopct.kind === 'format' ? unwrap(pyPercentFormat(autopct.fmt, pct)) : str(autopct.fn(pct));
+      return textAt(s, pieLabelPos(g, pctdistance, 'center', false), this.theme.font.sizePt);
+    });
+    // set(frame_on=False, xticks=[], yticks=[], xlim=center ± 1.25, ylim=…)
+    this.frameOn = false;
+    this.xaxis.ticks = { kind: 'fixed', locs: [] };
+    this.yaxis.ticks = { kind: 'fixed', locs: [] };
+    this.set_xlim(-1.25 + center[0], 1.25 + center[0]);
+    this.set_ylim(-1.25 + center[1], 1.25 + center[1]);
+    return { wedges, texts, autotexts, values: x, fracs };
+  }
+
   private parseBins(v: unknown, axis: Axis): Result<Bins> {
     if (typeof v === 'number') return Number.isInteger(v) && v >= 1 ? ok({ kind: 'count', n: v }) : err('`bins` must be positive, when an integer');
     if (typeof v === 'string') {
@@ -1518,7 +1673,7 @@ export class Axes {
     const at = (v: unknown, axis: Axis, name: string): number => (coords === 'axes'
       ? (typeof v === 'number' ? v : unwrap(err<number>(`text: ${name} must be a number in axes coordinates`)))
       : unwrap(axis.position(v, `text: ${name}`)));
-    const t: TextArtist = { kind: 'text', x: at(xRaw, this.xaxis, 'x'), y: at(yRaw, this.yaxis, 'y'), coords, text: str(s), sizePt, weight, color, ha, va, clip };
+    const t: TextArtist = { kind: 'text', x: at(xRaw, this.xaxis, 'x'), y: at(yRaw, this.yaxis, 'y'), coords, text: str(s), sizePt, weight, color, ha, va, clip, rotation: 0 };
     this.artists.push(t);
     return t;
   }
@@ -2050,6 +2205,7 @@ export class Axes {
       xShare: this.fig.axes.findIndex((o) => o.xaxis === this.xaxis),
       yShare: this.fig.axes.findIndex((o) => o.yaxis === this.yaxis),
       hiddenLabels: this.hiddenLabels,
+      frameOn: this.frameOn,
     };
   }
 }

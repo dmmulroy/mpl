@@ -83,7 +83,7 @@ export type LegendInput = {
   readonly Hg: number;
   /** Agg's pixel snapping (Frame.snap) */
   readonly snap: boolean;
-  readonly axesBox: Box; readonly lines: readonly XY[]; readonly points: readonly XY[]; readonly boxes: readonly Box[];
+  readonly axesBox: Box; readonly lines: readonly XY[]; readonly points: readonly XY[]; readonly paths: readonly XY[]; readonly boxes: readonly Box[];
   readonly loc: LegendLoc; readonly ncols: number; readonly frame: boolean; readonly fontSizePt: number; readonly markers: LegendMarkers;
 };
 /** `entries[i]`: entry i's handle + label box (display, y up), in input order: what an interactive layer hit-tests. */
@@ -92,7 +92,7 @@ export type LegendOutput = { readonly box: Box; readonly code: AnchorCode; reado
 /** Legend._find_best_position over the obstacle index; ties keep the lower code. */
 function bestCode(inp: LegendInput, W: number, Hh: number, pad: number, tracer: Tracer): AnchorCode {
   return tracer.span('legend.best', { lines: inp.lines.length, points: inp.points.length, bboxes: inp.boxes.length }, (sp) => {
-    const index = buildObstacleIndex(inp.lines, inp.points, inp.boxes, inp.axesBox.x1 + 1, inp.axesBox.y1 + 1, 16);
+    const index = buildObstacleIndex(inp.lines, inp.points, inp.boxes, inp.axesBox.x1 + 1, inp.axesBox.y1 + 1, 16, inp.paths);
     sp.setAttribute('cells', index.cells).setAttribute('segCells', index.segCells);
     let best: Option<{ readonly code: AnchorCode; readonly badness: number }> = none;
     for (const code of ANCHORS) {
