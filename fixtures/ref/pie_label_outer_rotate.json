@@ -1,0 +1,190 @@
+{
+ "spec": [
+  [
+   "pie",
+   [
+    [
+     10,
+     20,
+     30,
+     25,
+     15
+    ]
+   ],
+   {
+    "labeldistance": null,
+    "explode": [
+     0.1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "startangle": 90
+   }
+  ],
+  [
+   "pie_label",
+   [
+    {
+     "$ret": 0
+    },
+    [
+     "north",
+     "east",
+     "south",
+     "west",
+     "last"
+    ]
+   ],
+   {
+    "distance": 1.15,
+    "rotate": true,
+    "alignment": "outer"
+   }
+  ],
+  [
+   "pie_label",
+   [
+    {
+     "$ret": 0
+    },
+    "{frac:.1%}"
+   ],
+   {
+    "distance": 0.7,
+    "textprops": {
+     "fontsize": "small"
+    }
+   }
+  ],
+  [
+   "set_title",
+   [
+    "two pie_labels"
+   ],
+   {}
+  ]
+ ],
+ "style": null,
+ "rc": {},
+ "xlim": [
+  -1.25,
+  1.25
+ ],
+ "ylim": [
+  -1.25,
+  1.25
+ ],
+ "xticks": [],
+ "yticks": [],
+ "xticklabels": [],
+ "yticklabels": [],
+ "xoffset": "",
+ "yoffset": "",
+ "legend": null,
+ "x": {
+  "lim": [
+   -1.25,
+   1.25
+  ],
+  "ticks": [],
+  "labels": [],
+  "minor": [],
+  "minorlabels": [],
+  "offset": ""
+ },
+ "y": {
+  "lim": [
+   -1.25,
+   1.25
+  ],
+  "ticks": [],
+  "labels": [],
+  "minor": [],
+  "minorlabels": [],
+  "offset": ""
+ },
+ "axes": [
+  {
+   "xlim": [
+    -1.25,
+    1.25
+   ],
+   "ylim": [
+    -1.25,
+    1.25
+   ],
+   "xticks": [],
+   "yticks": [],
+   "xticklabels": [],
+   "yticklabels": [],
+   "xoffset": "",
+   "yoffset": "",
+   "legend": null,
+   "x": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   },
+   "y": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   }
+  }
+ ],
+ "figaxes": [
+  {
+   "xlim": [
+    -1.25,
+    1.25
+   ],
+   "ylim": [
+    -1.25,
+    1.25
+   ],
+   "xticks": [],
+   "yticks": [],
+   "xticklabels": [],
+   "yticklabels": [],
+   "xoffset": "",
+   "yoffset": "",
+   "legend": null,
+   "x": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   },
+   "y": {
+    "lim": [
+     -1.25,
+     1.25
+    ],
+    "ticks": [],
+    "labels": [],
+    "minor": [],
+    "minorlabels": [],
+    "offset": ""
+   }
+  }
+ ]
+}

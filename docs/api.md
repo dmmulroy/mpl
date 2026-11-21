@@ -296,6 +296,12 @@ pie(x, { labels, colors, autopct, explode, startangle, counterclock, shadow, rad
 
 Keyword arguments (unknown keys throw): `explode`, `labels`, `colors`, `autopct`, `pctdistance`, `labeldistance`, `shadow`, `startangle`, `radius`, `counterclock`, `wedgeprops`, `textprops`, `center`, `frame`, `rotatelabels`, `normalize`, `hatch`
 
+### `Axes.pie_label(container, labels, kwargs?)`
+
+pie_label(container, labels, { distance, textprops, rotate, alignment }) — Axes.pie_label (matplotlib 3.11): one Text per wedge of a pie() container, at distance·r along the wedge's bisector (distance > 1 is outside the pie). labels is a list of strings, one per wedge, or a str.format template with {absval} (the value) and {frac} (its fraction) fields, such as '{absval:d} ({frac:.0%})'. alignment 'outer' aligns each text away from the centre, 'center' centres it, 'auto' (the default) is 'outer' when distance > 1; rotate turns each text to its wedge's angle. textprops { fontsize|size, color|c, fontweight|weight } style the new texts only, so labels outside and percentages inside a pie can differ. Returns the new texts (the container's texts and autotexts are unchanged).
+
+Keyword arguments (unknown keys throw): `distance`, `textprops`, `rotate`, `alignment`
+
 ### `Axes.bar(x, height, kwargs?)`
 
 bar(x, height, { width, bottom, align, color|facecolor|fc, edgecolor|ec, linewidth|lw, alpha, label, clip_on }) — vertical bars.

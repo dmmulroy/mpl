@@ -912,10 +912,11 @@ def run_case(name, calls):
             fig, ax0 = plt.subplots()
             axes = [ax0]
         ax = axes[0]
-        for fn, args, kwargs in calls:
+        rets = {}   # {"$ret": i} as an argument is the value calls[i] returned (pie_label's PieContainer)
+        for i, (fn, args, kwargs) in enumerate(calls):
             if fn == "$subplots":
                 continue
-            args = [decode(a) for a in args]
+            args = [rets[a["$ret"]] if isinstance(a, dict) and "$ret" in a else decode(a) for a in args]
             if fn == "twinx":
                 ax = ax.twinx(); axes.append(ax); continue
             if fn == "sca":
@@ -947,7 +948,7 @@ def run_case(name, calls):
                 kwargs = {k: (ax.transAxes if isinstance(v, dict) and v.get("$transform") == "axes" else decode(v)) for k, v in kwargs.items()}
                 # an (x, y) coordinate-system pair is a tuple to matplotlib (JSON only has lists)
                 kwargs = {k: (tuple(v) if k in ("xycoords", "textcoords") and isinstance(v, list) else v) for k, v in kwargs.items()}
-                getattr(ax, fn)(*args, **kwargs)
+                rets[i] = getattr(ax, fn)(*args, **kwargs)
         fig.canvas.draw()
         recs = [record(a, fig) for a in axes]
         # figaxes: every Axes in fig.axes order (colorbar caxes too), so their ticks are pinned, not only their pixels
@@ -1005,6 +1006,19 @@ case("pie_props", ("pie", [[3, 1, 2, 2.5]], {"radius": 0.8, "center": [0.2, -0.1
 case("pie_subplot_grid", ("$subplots", [1, 2]),
      ("sca", [0]), ("plot", [x, sx]), ("set_title", ["a line"]),
      ("sca", [1]), ("pie", [[5, 3, 2]], {"labels": ["five", "three", "two"], "autopct": "%1.1f%%"}), ("set_title", ["a pie"]))
+# Axes.pie_label (matplotlib 3.11): label a pie() container; {"$ret": i} passes calls[i]'s PieContainer
+PIE_RET = {"$ret": 0}
+case("pie_label_format", ("pie", [PIE], {"labels": PIE_LABELS}),
+     ("pie_label", [PIE_RET, "{absval:d} ({frac:.0%})"], {"textprops": {"color": "w", "fontweight": "bold"}}))
+case("pie_label_outer_rotate", ("pie", [[10, 20, 30, 25, 15]], {"labeldistance": None, "explode": [0.1, 0, 0, 0, 0], "startangle": 90}),
+     ("pie_label", [PIE_RET, ["north", "east", "south", "west", "last"]], {"distance": 1.15, "rotate": True, "alignment": "outer"}),
+     ("pie_label", [PIE_RET, "{frac:.1%}"], {"distance": 0.7, "textprops": {"fontsize": "small"}}), ("set_title", ["two pie_labels"]))
+case("pie_label_donut_auto", ("pie", [[1250.5, 3400.25, 980.0]], {"labeldistance": None, "wedgeprops": {"width": 0.3, "edgecolor": "w"}}),
+     ("pie_label", [PIE_RET, "{absval:,.1f}"], {"distance": 0.85, "textprops": {"size": 9}}),
+     ("pie_label", [PIE_RET, ["rent", "salary", "food"]], {"distance": 1.15, "textprops": {"c": "C3"}}))
+case("pie_label_grid", ("$subplots", [1, 2]),
+     ("sca", [0]), ("pie", [[5, 3, 2]], {"labels": ["five", "three", "two"]}), ("pie_label", [{"$ret": 2}, "{frac:.0%}"], {"textprops": {"color": "w"}}),
+     ("sca", [1]), ("pie", [[0.2, 0.3, 0.15]], {"normalize": False, "counterclock": False}), ("pie_label", [{"$ret": 5}, "{absval}"], {"distance": 1.1}))
 
 def main():
     check_no_literal_newlines(CASES)

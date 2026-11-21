@@ -14,8 +14,8 @@ import type { Bins, Sample } from './core/histogram.ts';
 import { BIN_ESTIMATORS, histTops, npSum } from './core/histogram.ts';
 import type { Whis } from './core/boxplot.ts';
 import { boxplotStats, parseWhis, reshapeBoxplotData } from './core/boxplot.ts';
-import type { PieLabelPos } from './core/pie.ts';
-import { pieLabelPos, pieWedges, pyPercentFormat } from './core/pie.ts';
+import type { PieWedge } from './core/pie.ts';
+import { pieLabelPos, pieWedges, pyPercentFormat, pyStrFormat } from './core/pie.ts';
 import { scaleOf } from './core/ticks.ts';
 import { parseFmt, parseLinestyle, parseMarker } from './core/fmt.ts';
 import type { AxesAnnot } from './core/layout.ts';
@@ -372,7 +372,11 @@ export type BoxplotResult = {
 export type PieResult = {
   readonly wedges: readonly WedgeArtist[]; readonly texts: readonly TextArtist[]; readonly autotexts: readonly TextArtist[];
   readonly values: Float64Array; readonly fracs: Float64Array;
+  /** numpy's dtype of np.asarray(x): integer input formats as int64 in pie_label's {absval} (and {frac} when normalize=false). */
+  readonly dtype: 'int' | 'float'; readonly normalize: boolean;
 };
+/** pie_label's Text.set(**textprops): the keys mpl supports, each absent unless given. */
+type PieTextProps = { readonly size: Option<number>; readonly color: Option<Rgb>; readonly weight: Option<number> };
 
 /** ErrorbarContainer: (data_line, caplines, barlinecols) plus the legend artist. data_line is none for fmt='none'. */
 export type ErrorbarContainer = {
@@ -1485,11 +1489,7 @@ export class Axes {
     const lw = wp.read(['linewidth', 'lw'], num('linewidth'), () => this.theme.patch.linewidthPt);
     const alpha = wp.read(['alpha'], alphaOf, (): Option<number> => none);
     wp.done();
-    const tp = new KwReader(textprops, 'Text.set');
-    const tSize = tp.read(['fontsize', 'size'], (v) => mapResult(parseFontSize(v, this.theme.font.sizePt), (s): Option<number> => some(s)), (): Option<number> => none);
-    const tColor = tp.read(['color', 'c'], (v) => mapResult(parseRgb(v, cycle), (c): Option<Rgb> => some(c)), (): Option<Rgb> => none);
-    const tWeight = tp.read(['fontweight', 'weight'], (v) => mapResult(weightOf(v), (w): Option<number> => some(w)), (): Option<number> => none);
-    tp.done();
+    const tprops = this.pieTextProps(textprops);
 
     const xs = unwrap(parseSeries(xRaw, 'x'));
     if (xs.kind === 'strings') throw new TypeError('pie: x must be numeric');
@@ -1527,33 +1527,86 @@ export class Axes {
           edge: edgeOf({ kind: 'solid', color: c }, lw), label: { kind: 'none' }, clip: false, zorder: 1 - 2 ** -53, shift: some({ oxPt: shadow.ox, oyPt: shadow.oy }) });
       }
     });
-    const textAt = (s: string, at: PieLabelPos, sizePt: number): TextArtist => {
-      const t: TextArtist = {
-        kind: 'text', x: at.x, y: at.y, coords: 'data', text: s,
-        sizePt: tSize.kind === 'some' ? tSize.value : sizePt,
-        weight: tWeight.kind === 'some' ? tWeight.value : this.theme.font.weight,
-        color: tColor.kind === 'some' ? tColor.value : this.theme.text.color,
-        ha: at.ha, va: at.va, clip: false, rotation: at.rotation,
-      };
-      this.artists.push(t);
-      return t;
-    };
-    // pie_label(labels, distance=labeldistance, alignment='outer', rotate=rotatelabels) at xtick.labelsize
+    // pie_label(pc, labels, distance=labeldistance, alignment='outer', rotate=rotatelabels, textprops={fontsize: xtick.labelsize, **textprops})
     const texts = labeldistance.kind === 'some'
-      ? geometry.map((g, i) => textAt(labels[i], pieLabelPos(g, labeldistance.value, 'outer', rotatelabels), this.theme.xtick.labelSizePt)) : [];
-    // pie_label(autopct % (100·frac), distance=pctdistance, alignment='center') at font.size
-    const autotexts = autopct.kind === 'none' ? [] : geometry.map((g, i) => {
-      const pct = 100.0 * fracs[i];
-      const s = autopct.kind === 'format' ? unwrap(pyPercentFormat(autopct.fmt, pct)) : str(autopct.fn(pct));
-      return textAt(s, pieLabelPos(g, pctdistance, 'center', false), this.theme.font.sizePt);
-    });
+      ? this.pieTexts(wedges, labels, labeldistance.value, 'outer', rotatelabels, tprops, this.theme.xtick.labelSizePt) : [];
+    // pie_label(pc, [autopct % (100·frac)], distance=pctdistance, alignment='center', textprops=textprops) at font.size
+    const autotexts = autopct.kind === 'none' ? [] : this.pieTexts(wedges, Array.from(fracs, (f) => {
+      const pct = 100.0 * f;
+      return autopct.kind === 'format' ? unwrap(pyPercentFormat(autopct.fmt, pct)) : str(autopct.fn(pct));
+    }), pctdistance, 'center', false, tprops, this.theme.font.sizePt);
     // set(frame_on=False, xticks=[], yticks=[], xlim=center ± 1.25, ylim=…)
     this.frameOn = false;
     this.xaxis.ticks = { kind: 'fixed', locs: [] };
     this.yaxis.ticks = { kind: 'fixed', locs: [] };
     this.set_xlim(-1.25 + center[0], 1.25 + center[0]);
     this.set_ylim(-1.25 + center[1], 1.25 + center[1]);
-    return { wedges, texts, autotexts, values: x, fracs };
+    return { wedges, texts, autotexts, values: x, fracs, dtype: isIntegerData(xRaw) ? 'int' : 'float', normalize };
+  }
+
+  /**
+   * pie_label(container, labels, { distance, textprops, rotate, alignment }) — Axes.pie_label (matplotlib 3.11): one Text
+   * per wedge of a pie() container, at distance·r along the wedge's bisector (distance > 1 is outside the pie). labels is
+   * a list of strings, one per wedge, or a str.format template with {absval} (the value) and {frac} (its fraction)
+   * fields, such as '{absval:d} ({frac:.0%})'. alignment 'outer' aligns each text away from the centre, 'center' centres it,
+   * 'auto' (the default) is 'outer' when distance > 1; rotate turns each text to its wedge's angle. textprops
+   * { fontsize|size, color|c, fontweight|weight } style the new texts only, so labels outside and percentages inside a
+   * pie can differ. Returns the new texts (the container's texts and autotexts are unchanged).
+   */
+  pie_label(container: PieResult, labels: unknown, kwargs: Kwargs = {}): readonly TextArtist[] {
+    const kw = new KwReader(kwargs, 'pie_label');
+    const distance = kw.read(['distance'], num('distance'), () => 0.6);
+    const textprops = kw.read(['textprops'], (v) => (isNullish(v) ? ok({}) : propsDict('textprops')(v)), (): Kwargs => ({}));
+    const rotate = kw.read(['rotate'], bool('rotate'), () => false);
+    const alignmentK = kw.read(['alignment'], oneOf('alignment', ['center', 'outer', 'auto'] as const), (): 'center' | 'outer' | 'auto' => 'auto');
+    kw.done();
+    if (!isPlainObject(container) || !Array.isArray(container.wedges) || !(container.values instanceof Float64Array)) {
+      throw new TypeError('pie_label: container must be the PieContainer returned by pie()');
+    }
+    const alignment = alignmentK === 'auto' ? (distance > 1 ? 'outer' : 'center') : alignmentK;
+    const tprops = this.pieTextProps(textprops);
+    const n = container.wedges.length;
+    let strings: readonly string[];
+    if (typeof labels === 'string') {
+      const fracType = container.normalize ? 'float' : container.dtype;
+      strings = Array.from({ length: Math.min(n, container.values.length) }, (_, i) => unwrap(pyStrFormat(labels, {
+        absval: { kind: container.dtype, value: container.values[i] },
+        frac: { kind: fracType, value: container.fracs[i] },
+      })));
+    } else if (Array.isArray(labels)) {
+      if (labels.length !== n) throw new Error(`The number of labels (${labels.length}) must match the number of wedges (${n})`);
+      strings = labels.map((l: unknown) => (isNullish(l) ? '' : str(l)));
+    } else {
+      throw new TypeError('pie_label: labels must be a list of str or a format string');
+    }
+    return this.pieTexts(container.wedges, strings, distance, alignment, rotate, tprops, this.theme.font.sizePt);
+  }
+
+  /** Text.set(**textprops) for pie and pie_label texts: fontsize|size, color|c, fontweight|weight; other keys throw. */
+  private pieTextProps(textprops: Kwargs): PieTextProps {
+    const tp = new KwReader(textprops, 'Text.set');
+    const size = tp.read(['fontsize', 'size'], (v) => mapResult(parseFontSize(v, this.theme.font.sizePt), (s): Option<number> => some(s)), (): Option<number> => none);
+    const color = tp.read(['color', 'c'], (v) => mapResult(parseRgb(v, this.theme.axes.cycle), (c): Option<Rgb> => some(c)), (): Option<Rgb> => none);
+    const weight = tp.read(['fontweight', 'weight'], (v) => mapResult(weightOf(v), (w): Option<number> => some(w)), (): Option<number> => none);
+    tp.done();
+    return { size, color, weight };
+  }
+
+  /** pie_label's loop: ax.text(x, y, label, clip_on=False, rotation, ha, va) per wedge at distance·r, then Text.set(**textprops). */
+  private pieTexts(wedges: readonly PieWedge[], labels: readonly string[], distance: number, alignment: 'outer' | 'center',
+                   rotate: boolean, props: PieTextProps, sizePt: number): TextArtist[] {
+    return wedges.slice(0, labels.length).map((w, i) => {
+      const at = pieLabelPos(w, distance, alignment, rotate);
+      const t: TextArtist = {
+        kind: 'text', x: at.x, y: at.y, coords: 'data', text: labels[i],
+        sizePt: props.size.kind === 'some' ? props.size.value : sizePt,
+        weight: props.weight.kind === 'some' ? props.weight.value : this.theme.font.weight,
+        color: props.color.kind === 'some' ? props.color.value : this.theme.text.color,
+        ha: at.ha, va: at.va, clip: false, rotation: at.rotation,
+      };
+      this.artists.push(t);
+      return t;
+    });
   }
 
   private parseBins(v: unknown, axis: Axis): Result<Bins> {

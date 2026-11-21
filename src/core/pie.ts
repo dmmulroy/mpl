@@ -1,7 +1,7 @@
 // Axes.pie, made pure: matplotlib 3.11.2 axes/_axes.py (pie, pie_label), patches.Wedge._recompute_path,
-// path.Path.arc and Python's printf-style `autopct % pct`, with the same float operations in the same order.
+// path.Path.arc, Python's printf-style `autopct % pct` and pie_label's `labels.format(absval=, frac=)`, with the same float operations in the same order.
 import type { HAlign, Option, Result, VAlign } from './types.ts';
-import { err, ok } from './types.ts';
+import { assertNever, err, ok } from './types.ts';
 import { cos, sin, tan } from './libm.ts';
 
 /** Path codes, as matplotlib.path.Path. */
@@ -235,3 +235,170 @@ export function pyPercentFormat(fmt: string, value: number): Result<string> {
   if (used === 0) return err('autopct: not all arguments converted during string formatting');
   return ok(out);
 }
+
+// ---------------------------------------------------------------- Python str.format with named number fields
+/** A number as pie_label's str.format sees it: a numpy int64 (integer input to pie) or a float64. */
+export type PyNumber = { readonly kind: 'int'; readonly value: number } | { readonly kind: 'float'; readonly value: number };
+
+/** A parsed format spec: [[fill]align][sign][#][0][width][grouping][.precision][type]. */
+type FormatSpec = {
+  readonly fill: string; readonly align: '<' | '>' | '^' | '=' | ''; readonly sign: '+' | '-' | ' ';
+  readonly alt: boolean; readonly zero: boolean; readonly width: number; readonly grouping: ',' | '_' | '';
+  readonly precision: Option<number>; readonly type: string;
+};
+const SPEC_RE = /^(?:(.)?([<>=^]))?([-+ ])?(z)?(#)?(0)?(\d+)?([,_])?(?:\.(\d+))?([a-zA-Z%])?$/su;
+
+function parseFormatSpec(spec: string): Result<FormatSpec> {
+  const m = SPEC_RE.exec(spec);
+  if (!m) return err('Invalid format specifier');
+  const [, fillS, alignS, signS, zS, altS, zeroS, widthS, groupS, precS, typeS] = m;
+  if (typeof zS === 'string') return err("pie_label: the 'z' format option is not supported in mpl");
+  const fill = typeof fillS === 'string' ? fillS : '';
+  const align = alignS === '<' || alignS === '>' || alignS === '^' || alignS === '=' ? alignS : '';
+  const sign = signS === '+' || signS === ' ' ? signS : '-';
+  const grouping = groupS === ',' || groupS === '_' ? groupS : '';
+  const type = typeof typeS === 'string' ? typeS : '';
+  // checked before the type is matched to the value, as CPython's parser does
+  if (grouping !== '' && (type === 'n' || type === 'c' || (grouping === ',' && 'boxX'.includes(type) && type !== ''))) {
+    return err(`Cannot specify '${grouping}' with '${type}'.`);
+  }
+  return ok({
+    fill, align, sign, alt: altS === '#', zero: zeroS === '0', width: typeof widthS === 'string' ? Number(widthS) : 0, grouping,
+    precision: typeof precS === 'string' ? { kind: 'some', value: Number(precS) } : { kind: 'none' }, type,
+  });
+}
+
+/** Insert `sep` every `every` digits from the right of a digit string. */
+const group = (digits: string, sep: string, every: number): string => {
+  let out = '';
+  for (let i = digits.length; i > 0; i -= every) out = digits.slice(Math.max(0, i - every), i) + (out === '' ? '' : sep + out);
+  return out;
+};
+
+/** Pad sign + body to the spec's width (fill and alignment; '0' pads after the sign, grouping zeros as Python does). */
+function pad(spec: FormatSpec, sign: string, digits: string, rest: string, numeric: boolean, every: number): string {
+  const zeroFill = spec.zero && spec.align === '' && spec.fill === '' && numeric;
+  const align = spec.align !== '' ? spec.align : zeroFill ? '=' : '>';
+  const fill = spec.fill !== '' ? spec.fill : zeroFill ? '0' : ' ';
+  const sep = spec.grouping;
+  if (align === '=' && fill === '0' && numeric && sep !== '' && digits !== '') {
+    // Python groups the zero padding too: '{:08,d}'.format(1234) is '0,001,234'
+    let d = digits;
+    let body = group(d, sep, every);
+    while (sign.length + body.length + rest.length < spec.width) { d = '0' + d; body = group(d, sep, every); }
+    return sign + body + rest;
+  }
+  const body = (sep !== '' && digits !== '' ? group(digits, sep, every) : digits) + rest;
+  const n = sign.length + body.length;
+  if (n >= spec.width) return sign + body;
+  const k = spec.width - n;
+  switch (align) {
+    case '<': return sign + body + fill.repeat(k);
+    case '>': return fill.repeat(k) + sign + body;
+    case '^': return fill.repeat(Math.floor(k / 2)) + sign + body + fill.repeat(k - Math.floor(k / 2));
+    case '=': return sign + fill.repeat(k) + body;
+    default: return assertNever(align);
+  }
+}
+
+const signOf = (spec: FormatSpec, negative: boolean): string => (negative ? '-' : spec.sign === '-' ? '' : spec.sign);
+/** Split '1234.5e+07' into the integer digits (which grouping applies to) and the rest. */
+const splitDigits = (s: string): { readonly digits: string; readonly rest: string } => {
+  const m = /^(\d*)(.*)$/su.exec(s);
+  return m ? { digits: m[1], rest: m[2] } : { digits: '', rest: s };
+};
+
+function formatFloat(value: number, spec: FormatSpec, typeName: 'float' | 'int'): Result<string> {
+  // 'n' is 'g' in the C locale
+  const t = spec.type === 'n' ? 'g' : spec.type;
+  if (!['', 'e', 'E', 'f', 'F', 'g', 'G', '%'].includes(t)) return err(`Unknown format code '${t}' for object of type '${typeName}'`);
+  const negative = value < 0 || Object.is(value, -0);
+  const a = Math.abs(value);
+  const prec = spec.precision.kind === 'some' ? spec.precision.value : 6;
+  let s: string;
+  if (Number.isNaN(value)) s = 'nan';
+  else if (!Number.isFinite(value)) s = 'inf';
+  else if (t === 'f' || t === 'F') s = fixedDigits(a, prec, spec.alt);
+  else if (t === '%') s = fixedDigits(a * 100, prec, spec.alt);
+  else if (t === 'e' || t === 'E') s = expDigits(a, prec, spec.alt, t === 'E');
+  else if (t === 'g' || t === 'G') s = generalDigits(a, prec, spec.alt, t === 'G');
+  else if (spec.precision.kind === 'some') {
+    // no type with a precision: 'g', but a fixed-point result keeps a digit after the point
+    s = generalDigits(a, spec.precision.value, spec.alt, false);
+    if (!/[.e]/u.test(s)) s += '.0';
+  } else {
+    s = pyFloatRepr(a);
+    if (spec.alt && !s.includes('.')) s = s.includes('e') ? s.replace('e', '.e') : `${s}.`;
+  }
+  if (t === 'F' || t === 'E' || t === 'G') s = s.toUpperCase();
+  if (t === '%') s += '%';
+  const sign = signOf(spec, negative && !Number.isNaN(value));
+  const finite = Number.isFinite(value);
+  const { digits, rest } = finite ? splitDigits(s) : { digits: '', rest: s };
+  return ok(pad(spec, sign, digits, rest, true, 3));
+}
+
+function formatInt(value: number, spec: FormatSpec): Result<string> {
+  const t = spec.type;
+  if (['e', 'E', 'f', 'F', 'g', 'G', '%'].includes(t)) return formatFloat(value, spec, 'int');
+  if (!['', 'd', 'n', 'b', 'o', 'x', 'X', 'c'].includes(t)) return err(`Unknown format code '${t}' for object of type 'int'`);
+  if (spec.precision.kind === 'some') return err('Precision not allowed in integer format specifier');
+  if (t === 'c') {
+    if (spec.sign !== '-') return err("Sign not allowed with integer format specifier 'c'");
+    if (spec.alt) return err("Alternate form (#) not allowed with integer format specifier 'c'");
+    if (value < 0 || value > 0x10ffff) return err('%c arg not in range(0x110000)');
+    return ok(pad(spec, '', '', String.fromCodePoint(value), false, 3));
+  }
+  const big = BigInt(Math.trunc(Math.abs(value)));
+  const radix = t === 'b' ? 2 : t === 'o' ? 8 : t === 'x' || t === 'X' ? 16 : 10;
+  let digits = big.toString(radix);
+  if (t === 'X') digits = digits.toUpperCase();
+  const prefix = spec.alt && radix !== 10 ? `0${t === 'b' ? 'b' : t === 'o' ? 'o' : t}` : '';
+  const sign = signOf(spec, value < 0);
+  return ok(pad(spec, sign + prefix, digits, '', true, radix === 10 ? 3 : 4));
+}
+
+/** format(value, spec) for a numpy int64 or float64. */
+export function pyFormatNumber(v: PyNumber, spec: string): Result<string> {
+  const parsed = parseFormatSpec(spec);
+  if (!parsed.ok) return parsed;
+  return v.kind === 'int' ? formatInt(v.value, parsed.value) : formatFloat(v.value, parsed.value, 'float');
+}
+
+/**
+ * Python's `template.format(**fields)` (pie_label's absval/frac labels): literal text with {{ and }} escapes and
+ * {name} or {name:spec} fields. Positional fields, attribute or index access, !conversions and nested specs are not
+ * supported in mpl and are errors; a missing name is Python's KeyError message.
+ */
+export function pyStrFormat(template: string, fields: Readonly<Record<string, PyNumber>>): Result<string> {
+  let out = '';
+  let i = 0;
+  while (i < template.length) {
+    const c = template[i];
+    if (c === '}') {
+      if (template[i + 1] !== '}') return err("Single '}' encountered in format string");
+      out += '}'; i += 2; continue;
+    }
+    if (c !== '{') { out += c; i++; continue; }
+    if (template[i + 1] === '{') { out += '{'; i += 2; continue; }
+    const close = template.indexOf('}', i + 1);
+    if (close < 0) return err(i + 1 === template.length ? "Single '{' encountered in format string" : "expected '}' before end of string");
+    const field = template.slice(i + 1, close);
+    if (field.includes('{')) return err('pie_label: nested replacement fields are not supported in mpl');
+    const colon = field.indexOf(':');
+    const name = colon < 0 ? field : field.slice(0, colon);
+    const spec = colon < 0 ? '' : field.slice(colon + 1);
+    if (name.includes('!')) return err('pie_label: !r/!s/!a conversions are not supported in mpl');
+    if (name === '' || /^\d+$/u.test(name)) return err(`Replacement index ${name === '' ? 0 : name} out of range for positional args tuple`);
+    if (/[.[]/u.test(name)) return err('pie_label: attribute and index access in a format field is not supported in mpl');
+    const v = lookupField(fields, name);
+    if (v.kind === 'none') return err(`'${name}'`);
+    const s = pyFormatNumber(v.value, spec);
+    if (!s.ok) return s;
+    out += s.value;
+    i = close + 1;
+  }
+  return ok(out);
+}
+const lookupField = (fields: Readonly<Record<string, PyNumber>>, name: string): Option<PyNumber> =>
+  (Object.hasOwn(fields, name) ? { kind: 'some', value: fields[name] } : { kind: 'none' });
