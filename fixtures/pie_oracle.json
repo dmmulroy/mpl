@@ -6149,5 +6149,8294 @@
     "message": "Wedge sizes must be finite numbers"
    }
   }
+ ],
+ "strformats": [
+  {
+   "fmt": "{absval}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234"
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567"
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "int",
+   "value": 7,
+   "out": "700%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "int",
+   "value": 15,
+   "out": "1500%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "123400%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "123456700%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-300%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "int",
+   "value": 255,
+   "out": "25500%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "int",
+   "value": 7,
+   "out": "700.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "int",
+   "value": 15,
+   "out": "1500.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "123400.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "123456700.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-300.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "int",
+   "value": 255,
+   "out": "25500.0%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "int",
+   "value": 7,
+   "out": "700.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "int",
+   "value": 15,
+   "out": "1500.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "123400.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "123456700.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-300.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "int",
+   "value": 255,
+   "out": "25500.000000%"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0.0"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7.0"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15.0"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234.0"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567.0"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3.0"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255.0"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1,234"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1,234,567"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0.00"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7.00"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15.00"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1,234.00"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1,234,567.00"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3.00"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255.00"
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1_234"
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1_234_567"
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1_234"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1_234_567"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "int",
+   "value": 0,
+   "out": "       0|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "int",
+   "value": 7,
+   "out": "       7|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "int",
+   "value": 15,
+   "out": "      15|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "int",
+   "value": 1234,
+   "out": "    1234|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "int",
+   "value": 1234567,
+   "out": " 1234567|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "int",
+   "value": -3,
+   "out": "      -3|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "int",
+   "value": 255,
+   "out": "     255|"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "int",
+   "value": 0,
+   "out": "0       |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "int",
+   "value": 7,
+   "out": "7       |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "int",
+   "value": 15,
+   "out": "15      |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234    |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567 |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3      |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "int",
+   "value": 255,
+   "out": "255     |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "int",
+   "value": 0,
+   "out": "    0    |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "int",
+   "value": 7,
+   "out": "    7    |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "int",
+   "value": 15,
+   "out": "   15    |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "int",
+   "value": 1234,
+   "out": "  1234   |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "int",
+   "value": 1234567,
+   "out": " 1234567 |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "int",
+   "value": -3,
+   "out": "   -3    |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "int",
+   "value": 255,
+   "out": "   255   |"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "int",
+   "value": 0,
+   "out": "****0.0****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "int",
+   "value": 7,
+   "out": "****7.0****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "int",
+   "value": 15,
+   "out": "***15.0****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "**1234.0***"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "*1234567.0*"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "int",
+   "value": -3,
+   "out": "***-3.0****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "int",
+   "value": 255,
+   "out": "***255.0***"
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "int",
+   "value": 0,
+   "out": "+0"
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "int",
+   "value": 7,
+   "out": "+7"
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "int",
+   "value": 15,
+   "out": "+15"
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "+1234"
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "+1234567"
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "int",
+   "value": 255,
+   "out": "+255"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "int",
+   "value": 0,
+   "out": "+0"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "int",
+   "value": 7,
+   "out": "+7"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "int",
+   "value": 15,
+   "out": "+15"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "+1234"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "+1234567"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "int",
+   "value": 255,
+   "out": "+255"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "int",
+   "value": 0,
+   "out": " 0.00"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "int",
+   "value": 7,
+   "out": " 7.00"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "int",
+   "value": 15,
+   "out": " 15.00"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "int",
+   "value": 1234,
+   "out": " 1234.00"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": " 1234567.00"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3.00"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "int",
+   "value": 255,
+   "out": " 255.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "int",
+   "value": 0,
+   "out": "00000.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "int",
+   "value": 7,
+   "out": "00007.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "int",
+   "value": 15,
+   "out": "00015.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "01234.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-0003.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "int",
+   "value": 255,
+   "out": "00255.00"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "int",
+   "value": 0,
+   "out": "+      0.0"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "int",
+   "value": 7,
+   "out": "+      7.0"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "int",
+   "value": 15,
+   "out": "+     15.0"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "+   1234.0"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "+1234567.0"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-      3.0"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "int",
+   "value": 255,
+   "out": "+    255.0"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "int",
+   "value": 0,
+   "out": "00000000"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "int",
+   "value": 7,
+   "out": "00000007"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "int",
+   "value": 15,
+   "out": "00000015"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "00001234"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "01234567"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-0000003"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "int",
+   "value": 255,
+   "out": "00000255"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0.000000e+00"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7.000000e+00"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "int",
+   "value": 15,
+   "out": "1.500000e+01"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1.234000e+03"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1.234567e+06"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3.000000e+00"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "int",
+   "value": 255,
+   "out": "2.550000e+02"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0.00E+00"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7.00E+00"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "int",
+   "value": 15,
+   "out": "1.50E+01"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1.23E+03"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1.23E+06"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3.00E+00"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "int",
+   "value": 255,
+   "out": "2.55E+02"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1.23457e+06"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1.23e+03"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1.23e+06"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0.00"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7.00"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15.0"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1.23e+03"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1.23e+06"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3.00"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255."
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1.23457E+06"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "int",
+   "value": 0,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "int",
+   "value": 7,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "int",
+   "value": 15,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "int",
+   "value": 1234,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "int",
+   "value": 1234567,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "int",
+   "value": -3,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "int",
+   "value": 255,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "int",
+   "value": 15,
+   "out": "f"
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "4d2"
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "12d687"
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "int",
+   "value": 255,
+   "out": "ff"
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0X0"
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "int",
+   "value": 7,
+   "out": "0X7"
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "int",
+   "value": 15,
+   "out": "0XF"
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "0X4D2"
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "0X12D687"
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-0X3"
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "int",
+   "value": 255,
+   "out": "0XFF"
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "int",
+   "value": 15,
+   "out": "17"
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "2322"
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "4553207"
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "int",
+   "value": 255,
+   "out": "377"
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0o0"
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "int",
+   "value": 7,
+   "out": "0o7"
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "int",
+   "value": 15,
+   "out": "0o17"
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "0o2322"
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "0o4553207"
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-0o3"
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "int",
+   "value": 255,
+   "out": "0o377"
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "int",
+   "value": 7,
+   "out": "111"
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "int",
+   "value": 15,
+   "out": "1111"
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "10011010010"
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "100101101011010000111"
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-11"
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "int",
+   "value": 255,
+   "out": "11111111"
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0b0"
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "int",
+   "value": 7,
+   "out": "0b111"
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "int",
+   "value": 15,
+   "out": "0b1111"
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "0b10011010010"
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "0b100101101011010000111"
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-0b11"
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "int",
+   "value": 255,
+   "out": "0b11111111"
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "int",
+   "value": 7,
+   "out": "111"
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "int",
+   "value": 15,
+   "out": "1111"
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "100_1101_0010"
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1_0010_1101_0110_1000_0111"
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-11"
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "int",
+   "value": 255,
+   "out": "1111_1111"
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "int",
+   "value": 0,
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "int",
+   "value": 7,
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "int",
+   "value": 15,
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "int",
+   "value": 1234,
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "int",
+   "value": 1234567,
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "int",
+   "value": -3,
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "int",
+   "value": 255,
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "int",
+   "value": 0,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "int",
+   "value": 7,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "int",
+   "value": 15,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "int",
+   "value": 1234,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "int",
+   "value": 1234567,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "int",
+   "value": -3,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "int",
+   "value": 255,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "int",
+   "value": 0,
+   "out": "    0.0000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "int",
+   "value": 7,
+   "out": "    7.0000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "int",
+   "value": 15,
+   "out": "   15.0000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "int",
+   "value": 1234,
+   "out": " 1234.0000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567.0000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "int",
+   "value": -3,
+   "out": "   -3.0000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "int",
+   "value": 255,
+   "out": "  255.0000|"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "int",
+   "value": 0,
+   "out": "00000.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "int",
+   "value": 7,
+   "out": "00700.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "int",
+   "value": 15,
+   "out": "01500.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "123400.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "123456700.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-0300.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "int",
+   "value": 255,
+   "out": "25500.000%"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0,000,000.0"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "int",
+   "value": 7,
+   "out": "0,000,007.0"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "int",
+   "value": 15,
+   "out": "0,000,015.0"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "0,001,234.0"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1,234,567.0"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-000,003.0"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "int",
+   "value": 255,
+   "out": "0,000,255.0"
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0,000,000"
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "int",
+   "value": 7,
+   "out": "0,000,007"
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "int",
+   "value": 15,
+   "out": "0,000,015"
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "0,001,234"
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1,234,567"
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-000,003"
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "int",
+   "value": 255,
+   "out": "0,000,255"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0_000_000.00"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "int",
+   "value": 7,
+   "out": "0_000_007.00"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "int",
+   "value": 15,
+   "out": "0_000_015.00"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "0_001_234.00"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1_234_567.00"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-0_000_003.00"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "int",
+   "value": 255,
+   "out": "0_000_255.00"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "int",
+   "value": 0,
+   "out": "{literal} 0"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "int",
+   "value": 7,
+   "out": "{literal} 7"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "int",
+   "value": 15,
+   "out": "{literal} 15"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "{literal} 1234"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "{literal} 1234567"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "int",
+   "value": -3,
+   "out": "{literal} -3"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "int",
+   "value": 255,
+   "out": "{literal} 255"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0.00% of 0"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "int",
+   "value": 7,
+   "out": "700.00% of 7"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "int",
+   "value": 15,
+   "out": "1500.00% of 15"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "123400.00% of 1234"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "123456700.00% of 1234567"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-300.00% of -3"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "int",
+   "value": 255,
+   "out": "25500.00% of 255"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0.000000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7.000000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15.000000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234.000000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567.000000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3.000000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255.000000"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0e+00"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7e+00"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "int",
+   "value": 15,
+   "out": "2e+01"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1e+03"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1e+06"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3e+00"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "int",
+   "value": 255,
+   "out": "3e+02"
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255."
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "int",
+   "value": 7,
+   "out": "700.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "int",
+   "value": 15,
+   "out": "1500.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "123400.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "123456700.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-300.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "int",
+   "value": 255,
+   "out": "25500.000000%"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "int",
+   "value": 0,
+   "out": "    0|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "int",
+   "value": 7,
+   "out": "    7|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "int",
+   "value": 15,
+   "out": "   15|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "int",
+   "value": 1234,
+   "out": " 1234|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "int",
+   "value": -3,
+   "out": "   -3|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "int",
+   "value": 255,
+   "out": "  255|"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "int",
+   "value": 0,
+   "out": "+0.000e+00  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "int",
+   "value": 7,
+   "out": "+7.000e+00  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "int",
+   "value": 15,
+   "out": "+1.500e+01  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "int",
+   "value": 1234,
+   "out": "+1.234e+03  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "+1.235e+06  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3.000e+00  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "int",
+   "value": 255,
+   "out": "+2.550e+02  |"
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "int",
+   "value": 0,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "int",
+   "value": 7,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "int",
+   "value": 15,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "int",
+   "value": 1234,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "int",
+   "value": 1234567,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "int",
+   "value": -3,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "int",
+   "value": 255,
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "int",
+   "value": 0,
+   "out": "\u0000"
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "int",
+   "value": 7,
+   "out": "\u0007"
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "int",
+   "value": 15,
+   "out": "\u000f"
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "\u04d2"
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "int",
+   "value": 1234567,
+   "error": {
+    "type": "OverflowError",
+    "message": "%c arg not in range(0x110000)"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "int",
+   "value": -3,
+   "error": {
+    "type": "OverflowError",
+    "message": "%c arg not in range(0x110000)"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "int",
+   "value": 255,
+   "out": "\u00ff"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "int",
+   "value": 0,
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "int",
+   "value": 7,
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "int",
+   "value": 15,
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "int",
+   "value": 1234,
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "int",
+   "value": -3,
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "int",
+   "value": 255,
+   "out": "plain text"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "int",
+   "value": 0,
+   "out": "00"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "int",
+   "value": 7,
+   "out": "77"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "int",
+   "value": 15,
+   "out": "1515"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "12341234"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "12345671234567"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3-3"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255255"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "int",
+   "value": 0,
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "int",
+   "value": 7,
+   "out": "7"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "int",
+   "value": 15,
+   "out": "15"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "int",
+   "value": 1234,
+   "out": "1234"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "int",
+   "value": 1234567,
+   "out": "1234567"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "int",
+   "value": -3,
+   "out": "-3"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "int",
+   "value": 255,
+   "out": "255"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.0"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.5678"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.3333333333333333"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{absval}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.0"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.5678"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.3333333333333333"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{frac}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:d}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "35%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "1250%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "123457%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "12345678900%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "12%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "250%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "33%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-50%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "10000000000000000000000%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "100%"
+  },
+  {
+   "fmt": "{frac:.0%}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "100%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "35.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "1250.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "123456.8%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "12345678900.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "12.5%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "250.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "33.3%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-50.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "10000000000000000000000.0%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "99.9%"
+  },
+  {
+   "fmt": "{frac:.1%}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "99.5%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "35.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "1250.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "123456.780000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0.001000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "12345678900.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "12.500000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "250.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "33.333333%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-50.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "10000000000000000000000.000000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "99.900000%"
+  },
+  {
+   "fmt": "{frac:%}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "99.500000%"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.0"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.3"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.6"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0.0"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.1"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.3"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "100000000000000000000.0"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "1.0"
+  },
+  {
+   "fmt": "{absval:.1f}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "1.0"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.0"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1,234.5678"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123,456,789.0"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.3333333333333333"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{absval:,}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.00"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.50"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1,234.57"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0.00"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123,456,789.00"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.12"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.50"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.33"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.50"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "100,000,000,000,000,000,000.00"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "1.00"
+  },
+  {
+   "fmt": "{absval:,.2f}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.99"
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_d}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.0"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1_234.5678"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123_456_789.0"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.3333333333333333"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{absval:_}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "     0.0|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "    0.35|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "    12.5|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.5678|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "   1e-05|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "   0.125|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "     2.5|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.3333333333333333|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "    -0.5|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "   1e+20|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "   0.999|"
+  },
+  {
+   "fmt": "{absval:>8}|",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "   0.995|"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.0     |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35    |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5    |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.5678|"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05   |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0|"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125   |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5     |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.3333333333333333|"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5    |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20   |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999   |"
+  },
+  {
+   "fmt": "{absval:<8}|",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995   |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "   0.0   |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "  0.35   |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "  12.5   |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.5678|"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "  1e-05  |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0|"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "  0.125  |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "   2.5   |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.3333333333333333|"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "  -0.5   |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "  1e+20  |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "  0.999  |"
+  },
+  {
+   "fmt": "{absval:^9}|",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "  0.995  |"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "****0.0****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "****0.3****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "***12.5****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "**1234.6***"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "****0.0****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "****0.1****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "****2.5****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "****0.3****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "***-0.5****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "100000000000000000000.0"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "****1.0****"
+  },
+  {
+   "fmt": "{absval:*^11.1f}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "****1.0****"
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+d}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "+0.0"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "+0.35"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "+12.5"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "+1234.5678"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "+1e-05"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "+123456789.0"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "+0.125"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "+2.5"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "+0.3333333333333333"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "+1e+20"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "+0.999"
+  },
+  {
+   "fmt": "{absval:+}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "+0.995"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": " 0.00"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": " 0.35"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": " 12.50"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": " 1234.57"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": " 0.00"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": " 123456789.00"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": " 0.12"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": " 2.50"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": " 0.33"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.50"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": " 100000000000000000000.00"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": " 1.00"
+  },
+  {
+   "fmt": "{absval: .2f}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": " 0.99"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "00000.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "00000.35"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "00012.50"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "01234.57"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "00000.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "00000.12"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "00002.50"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "00000.33"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0000.50"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "100000000000000000000.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "00001.00"
+  },
+  {
+   "fmt": "{absval:08.2f}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "00000.99"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "+      0.0"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "+      0.3"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "+     12.5"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "+   1234.6"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "+      0.0"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "+123456789.0"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "+      0.1"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "+      2.5"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "+      0.3"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-      0.5"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "+100000000000000000000.0"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "+      1.0"
+  },
+  {
+   "fmt": "{absval:=+10.1f}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "+      1.0"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "000000.0"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "00000.35"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "000012.5"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.5678"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0001e-05"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0000.125"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "000002.5"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.3333333333333333"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-00000.5"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "0001e+20"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0000.999"
+  },
+  {
+   "fmt": "{absval:0=8}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0000.995"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.000000e+00"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "3.500000e-01"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "1.250000e+01"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1.234568e+03"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1.000000e-05"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "1.234568e+08"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "1.250000e-01"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.500000e+00"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "3.333333e-01"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-5.000000e-01"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1.000000e+20"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "9.990000e-01"
+  },
+  {
+   "fmt": "{absval:e}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "9.950000e-01"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.00E+00"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "3.50E-01"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "1.25E+01"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1.23E+03"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1.00E-05"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "1.23E+08"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "1.25E-01"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.50E+00"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "3.33E-01"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-5.00E-01"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1.00E+20"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "9.99E-01"
+  },
+  {
+   "fmt": "{absval:.2E}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "9.95E-01"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.57"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "1.23457e+08"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.333333"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{absval:g}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1.23e+03"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "1.23e+08"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.333"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{absval:.3g}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.00"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.350"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1.23e+03"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1.00e-05"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "1.23e+08"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.50"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.333"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.500"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1.00e+20"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{absval:#.3g}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.57"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1E-05"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "1.23457E+08"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.333333"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1E+20"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{absval:G}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.0"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1.23e+03"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "1.23e+08"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.333"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{absval:.3}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.0"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.5678"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1.e-05"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.3333333333333333"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1.e+20"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{absval:#}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:x}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'x' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#X}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'X' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:o}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#o}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'o' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:b}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:#b}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:_b}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'b' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{absval:,x}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Cannot specify ',' with 'x'."
+   }
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.0"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1.23e+03"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "1.23e+08"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.333"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{frac:.3}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "    0.0000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "    0.3500|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "   12.5000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": " 1234.5678|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "    0.0000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "    0.1250|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "    2.5000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "    0.3333|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "   -0.5000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "100000000000000000000.0000|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "    0.9990|"
+  },
+  {
+   "fmt": "{frac:10.4f}|",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "    0.9950|"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "00000.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "00035.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "01250.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "123456.780%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "00000.001%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "12345678900.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "00012.500%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "00250.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "00033.333%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0050.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "10000000000000000000000.000%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "00099.900%"
+  },
+  {
+   "fmt": "{frac:010.3%}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "00099.500%"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0,000,000.0"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0,000,000.3"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "0,000,012.5"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "0,001,234.6"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0,000,000.0"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123,456,789.0"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0,000,000.1"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "0,000,002.5"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0,000,000.3"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-000,000.5"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "100,000,000,000,000,000,000.0"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0,000,001.0"
+  },
+  {
+   "fmt": "{absval:010,.1f}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0,000,001.0"
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:08,d}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0_000_000.00"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0_000_000.35"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "0_000_012.50"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "0_001_234.57"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0_000_000.00"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123_456_789.00"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0_000_000.12"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "0_000_002.50"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0_000_000.33"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0_000_000.50"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "100_000_000_000_000_000_000.00"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0_000_001.00"
+  },
+  {
+   "fmt": "{absval:012_.2f}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0_000_000.99"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "{literal} 0.0"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "{literal} 0.35"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "{literal} 12.5"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "{literal} 1234.5678"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "{literal} 1e-05"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "{literal} 123456789.0"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "{literal} 0.125"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "{literal} 2.5"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "{literal} 0.3333333333333333"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "{literal} -0.5"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "{literal} 1e+20"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "{literal} 0.999"
+  },
+  {
+   "fmt": "{{literal}} {absval}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "{literal} 0.995"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.00% of 0.0"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "35.00% of 0.35"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "1250.00% of 12.5"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "123456.78% of 1234.5678"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0.00% of 1e-05"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "12345678900.00% of 123456789.0"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "12.50% of 0.125"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "250.00% of 2.5"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "33.33% of 0.3333333333333333"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-50.00% of -0.5"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "10000000000000000000000.00% of 1e+20"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "99.90% of 0.999"
+  },
+  {
+   "fmt": "{frac:.2%} of {absval}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "99.50% of 0.995"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.000000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.350000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.500000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.567800"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0.000010"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.000000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.500000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.333333"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.500000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "100000000000000000000.000000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999000"
+  },
+  {
+   "fmt": "{absval:F}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995000"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1235"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "100000000000000000000"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "1"
+  },
+  {
+   "fmt": "{frac:.0f}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "1"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0e+00"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "3e-01"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "1e+01"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1e+03"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "1e+08"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "1e-01"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2e+00"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "3e-01"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-5e-01"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "1e+00"
+  },
+  {
+   "fmt": "{absval:.0e}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "1e+00"
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1235."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "100000000000000000000."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "1."
+  },
+  {
+   "fmt": "{absval:#.0f}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "1."
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "35.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "1250.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "123456.780000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "0.001000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "12345678900.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "12.500000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "250.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "33.333333%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-50.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "10000000000000000000000.000000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "99.900000%"
+  },
+  {
+   "fmt": "{absval:%}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "99.500000%"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "  0.0|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "0.35",
+   "out": " 0.35|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "12.5",
+   "out": " 12.5|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.5678|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "  2.5|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.3333333333333333|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": " -0.5|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999|"
+  },
+  {
+   "fmt": "{absval:5}|",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995|"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "+0.000e+00  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "+3.500e-01  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "+1.250e+01  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "+1.235e+03  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "+1.000e-05  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "+1.235e+08  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "+1.250e-01  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "+2.500e+00  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "+3.333e-01  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-5.000e-01  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "+1.000e+20  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "+9.990e-01  |"
+  },
+  {
+   "fmt": "{frac:<+12.3e}|",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "+9.950e-01  |"
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:.2d}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "0.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "0.35",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "12.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "1e-05",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "0.125",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "2.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "-0.5",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "1e+20",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "0.999",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "{absval:c}",
+   "dtype": "float",
+   "value": "0.995",
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'c' for object of type 'float'"
+   }
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "plain text"
+  },
+  {
+   "fmt": "plain text",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "plain text"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0.00.0"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.350.35"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.512.5"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.56781234.5678"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-051e-05"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "123456789.0123456789.0"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.1250.125"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.52.5"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.33333333333333330.3333333333333333"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5-0.5"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+201e+20"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.9990.999"
+  },
+  {
+   "fmt": "{absval}{frac}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.9950.995"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "0.0",
+   "out": "0"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "0.35",
+   "out": "0.35"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "12.5",
+   "out": "12.5"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "1234.5678",
+   "out": "1234.57"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "1e-05",
+   "out": "1e-05"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "123456789.0",
+   "out": "1.23457e+08"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "0.125",
+   "out": "0.125"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "2.5",
+   "out": "2.5"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "0.3333333333333333",
+   "out": "0.333333"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "-0.5",
+   "out": "-0.5"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "1e+20",
+   "out": "1e+20"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "0.999",
+   "out": "0.999"
+  },
+  {
+   "fmt": "{absval:n}",
+   "dtype": "float",
+   "value": "0.995",
+   "out": "0.995"
+  }
+ ],
+ "pie_labels": [
+  {
+   "name": "format_inside",
+   "x": [
+    15,
+    30,
+    45,
+    10
+   ],
+   "pie": {
+    "labels": [
+     "Frogs",
+     "Hogs",
+     "Dogs",
+     "Logs"
+    ]
+   },
+   "calls": [
+    {
+     "labels": "{absval:d} ({frac:.0%})",
+     "kw": {
+      "textprops": {
+       "color": "w",
+       "fontweight": "bold"
+      }
+     }
+    }
+   ],
+   "texts": [
+    [
+     {
+      "x": "0.5346039145130207",
+      "y": "0.27239429984372804",
+      "s": "15 (15%)",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#ffffffff",
+      "weight": "bold",
+      "clip": false
+     },
+     {
+      "x": "-0.18541019662496816",
+      "y": "0.5706339097770923",
+      "s": "30 (30%)",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#ffffffff",
+      "weight": "bold",
+      "clip": false
+     },
+     {
+      "x": "-0.27239429984372865",
+      "y": "-0.5346039145130204",
+      "s": "45 (45%)",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#ffffffff",
+      "weight": "bold",
+      "clip": false
+     },
+     {
+      "x": "0.5706339097770919",
+      "y": "-0.1854101966249691",
+      "s": "10 (10%)",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#ffffffff",
+      "weight": "bold",
+      "clip": false
+     }
+    ]
+   ]
+  },
+  {
+   "name": "list_outer_rotate",
+   "x": [
+    10,
+    20,
+    30,
+    25,
+    15
+   ],
+   "pie": {
+    "labeldistance": null,
+    "explode": [
+     0.1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "startangle": 90
+   },
+   "calls": [
+    {
+     "labels": [
+      "north",
+      "east",
+      "south",
+      "west",
+      "last"
+     ],
+     "kw": {
+      "distance": 1.15,
+      "rotate": true,
+      "alignment": "outer"
+     }
+    },
+    {
+     "labels": "{frac:.1%}",
+     "kw": {
+      "distance": 0.7,
+      "textprops": {
+       "fontsize": "small"
+      }
+     }
+    }
+   ],
+   "texts": [
+    [
+     {
+      "x": "-0.38627124296868415",
+      "y": "1.188820645368942",
+      "s": "north",
+      "ha": "right",
+      "va": "bottom",
+      "rotation": "288.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "-1.0937149937394264",
+      "y": "0.3553695435311896",
+      "s": "east",
+      "ha": "right",
+      "va": "bottom",
+      "rotation": "342.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "-0.3553695435311887",
+      "y": "-1.0937149937394268",
+      "s": "south",
+      "ha": "right",
+      "va": "top",
+      "rotation": "72.00000000000006",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "1.1358415916844085",
+      "y": "-0.17989963479626475",
+      "s": "west",
+      "ha": "left",
+      "va": "top",
+      "rotation": "351.00000000000006",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "0.522089074700479",
+      "y": "1.0246575028166227",
+      "s": "last",
+      "ha": "left",
+      "va": "bottom",
+      "rotation": "63.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     }
+    ],
+    [
+     {
+      "x": "-0.24721359549995786",
+      "y": "0.7608452130361228",
+      "s": "10.0%",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "8.33",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "-0.6657395614066074",
+      "y": "0.21631189606246323",
+      "s": "20.0%",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "8.33",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "-0.2163118960624627",
+      "y": "-0.6657395614066076",
+      "s": "30.0%",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "8.33",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "0.6913818384165965",
+      "y": "-0.10950412552816115",
+      "s": "25.0%",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "8.33",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "0.3177933498176829",
+      "y": "0.6237045669318574",
+      "s": "15.0%",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "8.33",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     }
+    ]
+   ]
+  },
+  {
+   "name": "auto_both_sides",
+   "x": [
+    1250.5,
+    3400.25,
+    980.0
+   ],
+   "pie": {
+    "labeldistance": null,
+    "wedgeprops": {
+     "width": 0.3
+    }
+   },
+   "calls": [
+    {
+     "labels": "{absval:,.1f}",
+     "kw": {
+      "distance": 0.85
+     }
+    },
+    {
+     "labels": [
+      "a",
+      "b",
+      "c"
+     ],
+     "kw": {
+      "distance": 1.2,
+      "textprops": {
+       "size": 9,
+       "c": "C3"
+      }
+     }
+    },
+    {
+     "labels": [
+      "x",
+      "y",
+      "z"
+     ],
+     "kw": {
+      "distance": 1.0
+     }
+    },
+    {
+     "labels": [
+      "p",
+      "q",
+      "r"
+     ],
+     "kw": {
+      "distance": 0.4,
+      "rotate": true
+     }
+    }
+   ],
+   "texts": [
+    [
+     {
+      "x": "0.6513748120738158",
+      "y": "0.5460868559082898",
+      "s": "1,250.5",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "-0.8403380178754798",
+      "y": "-0.12779677504972403",
+      "s": "3,400.2",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "0.7260743030049949",
+      "y": "-0.4419458185296143",
+      "s": "980.0",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     }
+    ],
+    [
+     {
+      "x": "0.9195879699865634",
+      "y": "0.7709461495175854",
+      "s": "a",
+      "ha": "left",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "9.0",
+      "color": "#d62728ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "-1.1863595546477361",
+      "y": "-0.18041897654078687",
+      "s": "b",
+      "ha": "right",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "9.0",
+      "color": "#d62728ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "1.025046074830581",
+      "y": "-0.6239235085123966",
+      "s": "c",
+      "ha": "left",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "9.0",
+      "color": "#d62728ff",
+      "weight": "normal",
+      "clip": false
+     }
+    ],
+    [
+     {
+      "x": "0.7663233083221362",
+      "y": "0.6424551245979879",
+      "s": "x",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "-0.9886329622064468",
+      "y": "-0.1503491471173224",
+      "s": "y",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "0.8542050623588175",
+      "y": "-0.5199362570936639",
+      "s": "z",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     }
+    ],
+    [
+     {
+      "x": "0.3065293233288545",
+      "y": "0.2569820498391952",
+      "s": "p",
+      "ha": "center",
+      "va": "center",
+      "rotation": "39.975136527105626",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "-0.39545318488257875",
+      "y": "-0.060139658846928956",
+      "s": "q",
+      "ha": "center",
+      "va": "center",
+      "rotation": "8.647160680193622",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "0.34168202494352706",
+      "y": "-0.20797450283746555",
+      "s": "r",
+      "ha": "center",
+      "va": "center",
+      "rotation": "328.67202415308793",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     }
+    ]
+   ]
+  },
+  {
+   "name": "clockwise_center",
+   "x": [
+    3,
+    1,
+    2
+   ],
+   "pie": {
+    "counterclock": false,
+    "startangle": 200,
+    "center": [
+     0.5,
+     -0.25
+    ],
+    "radius": 0.7,
+    "labels": [
+     "i",
+     "j",
+     "k"
+    ]
+   },
+   "calls": [
+    {
+     "labels": "{absval}",
+     "kw": {
+      "alignment": "center",
+      "distance": 1.3
+     }
+    },
+    {
+     "labels": "{frac:.3}",
+     "kw": {
+      "alignment": "outer",
+      "rotate": true,
+      "distance": 0.5
+     }
+    }
+   ],
+   "texts": [
+    [
+     {
+      "x": "0.1887616695736415",
+      "y": "0.6051202849151766",
+      "s": "3",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "1.3961750552411094",
+      "y": "-0.4080198416769064",
+      "s": "1",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "0.3419801583230935",
+      "y": "-1.1461750552411092",
+      "s": "2",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     }
+    ],
+    [
+     {
+      "x": "0.38029294983601597",
+      "y": "0.0788924172750679",
+      "s": "0.5",
+      "ha": "left",
+      "va": "bottom",
+      "rotation": "110.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "0.8446827135542728",
+      "y": "-0.31077686218342554",
+      "s": "0.167",
+      "ha": "left",
+      "va": "top",
+      "rotation": "350.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "0.4392231378165744",
+      "y": "-0.5946827135542727",
+      "s": "0.333",
+      "ha": "left",
+      "va": "top",
+      "rotation": "260.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     }
+    ]
+   ]
+  },
+  {
+   "name": "partial_unnormalized",
+   "x": [
+    0.2,
+    0.3,
+    0.15
+   ],
+   "pie": {
+    "normalize": false
+   },
+   "calls": [
+    {
+     "labels": "{frac:.0%} / {absval}",
+     "kw": {
+      "textprops": null
+     }
+    }
+   ],
+   "texts": [
+    [
+     {
+      "x": "0.4854101966249684",
+      "y": "0.3526711513754839",
+      "s": "20% / 0.2",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "-0.3526711513754838",
+      "y": "0.4854101966249684",
+      "s": "30% / 0.3",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "-0.5346039145130208",
+      "y": "-0.27239429984372776",
+      "s": "15% / 0.15",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     }
+    ]
+   ]
+  },
+  {
+   "name": "int_unnormalized",
+   "x": [
+    0,
+    1
+   ],
+   "pie": {
+    "normalize": false
+   },
+   "calls": [
+    {
+     "labels": "{frac} {absval:d}",
+     "kw": {}
+    }
+   ],
+   "texts": [
+    [
+     {
+      "x": "0.6",
+      "y": "0.0",
+      "s": "0 0",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     },
+     {
+      "x": "-0.6",
+      "y": "7.347880794884119e-17",
+      "s": "1 1",
+      "ha": "center",
+      "va": "center",
+      "rotation": "0.0",
+      "size": "10.0",
+      "color": "#000000ff",
+      "weight": "normal",
+      "clip": false
+     }
+    ]
+   ]
+  }
+ ],
+ "label_errors": [
+  {
+   "name": "count",
+   "x": [
+    1,
+    2
+   ],
+   "labels": [
+    "a"
+   ],
+   "kw": {},
+   "error": {
+    "type": "ValueError",
+    "message": "The number of labels (1) must match the number of wedges (2)"
+   }
+  },
+  {
+   "name": "alignment",
+   "x": [
+    1,
+    2
+   ],
+   "labels": [
+    "a",
+    "b"
+   ],
+   "kw": {
+    "alignment": "left"
+   },
+   "error": {
+    "type": "ValueError",
+    "message": "'left' is not a valid value for alignment. Supported values are 'center', 'outer', 'auto'"
+   }
+  },
+  {
+   "name": "missing_name",
+   "x": [
+    1,
+    2
+   ],
+   "labels": "{value}",
+   "kw": {},
+   "error": {
+    "type": "KeyError",
+    "message": "'value'"
+   }
+  },
+  {
+   "name": "float_d",
+   "x": [
+    1.5,
+    2
+   ],
+   "labels": "{absval:d}",
+   "kw": {},
+   "error": {
+    "type": "ValueError",
+    "message": "Unknown format code 'd' for object of type 'float'"
+   }
+  },
+  {
+   "name": "single_close",
+   "x": [
+    1,
+    2
+   ],
+   "labels": "a}b",
+   "kw": {},
+   "error": {
+    "type": "ValueError",
+    "message": "Single '}' encountered in format string"
+   }
+  },
+  {
+   "name": "single_open",
+   "x": [
+    1,
+    2
+   ],
+   "labels": "a{b",
+   "kw": {},
+   "error": {
+    "type": "ValueError",
+    "message": "expected '}' before end of string"
+   }
+  },
+  {
+   "name": "unclosed",
+   "x": [
+    1,
+    2
+   ],
+   "labels": "{absval",
+   "kw": {},
+   "error": {
+    "type": "ValueError",
+    "message": "expected '}' before end of string"
+   }
+  },
+  {
+   "name": "positional",
+   "x": [
+    1,
+    2
+   ],
+   "labels": "{}",
+   "kw": {},
+   "error": {
+    "type": "IndexError",
+    "message": "Replacement index 0 out of range for positional args tuple"
+   }
+  },
+  {
+   "name": "int_precision",
+   "x": [
+    1,
+    2
+   ],
+   "labels": "{absval:.2d}",
+   "kw": {},
+   "error": {
+    "type": "ValueError",
+    "message": "Precision not allowed in integer format specifier"
+   }
+  }
  ]
 }

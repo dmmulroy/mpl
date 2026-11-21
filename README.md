@@ -188,7 +188,7 @@ Browsers take the same import through any bundler. To try it in the repo: `git c
   matplotlib draws) and opt-in min/max decimation per pixel column.
 - **Tracing:** OpenTelemetry-shaped spans per layout stage, artist and text layout; a shared no-op when disabled.
 
-Unknown keyword arguments throw, as in matplotlib. Not yet: `violinplot`, `pie`, `stem`, `stairs`,
+Unknown keyword arguments throw, as in matplotlib. Not yet: `violinplot`, `stem`, `stairs`,
 `subplot_mosaic`, general mathtext, constrained layout ([full list](docs/guide.md#api-overview)).
 
 ## Interactive SVG

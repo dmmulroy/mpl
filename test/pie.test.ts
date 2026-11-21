@@ -3,7 +3,7 @@
 // printf-style autopct strings, and the errors it raises.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { pyPercentFormat, unitArc, wedgePath } from '../src/core/pie.ts';
+import { pyPercentFormat, pyStrFormat, unitArc, wedgePath } from '../src/core/pie.ts';
 import { none, some } from '../src/core/types.ts';
 import type { Paint, Rgb, TextArtist, WedgeArtist } from '../src/core/types.ts';
 import { registerFonts, subplots } from '../src/index.ts';
@@ -28,6 +28,9 @@ type Oracle = {
   formats: { fmt: string; value: string; out: string }[];
   pies: PieRec[];
   errors: { name: string; x: (number | { $float: string })[]; kw: Record<string, unknown>; error: { type: string; message: string } }[];
+  strformats: ({ fmt: string; dtype: 'int' | 'float'; value: number | string } & ({ out: string } | { error: { type: string; message: string } }))[];
+  pie_labels: { name: string; x: number[]; pie: Record<string, unknown>; calls: { labels: string | string[]; kw: Record<string, unknown> }[]; texts: TextRec[][] }[];
+  label_errors: { name: string; x: number[]; labels: string | string[]; kw: Record<string, unknown>; error: { type: string; message: string } }[];
 };
 const oracle: Oracle = JSON.parse(readFileSync(new URL('../fixtures/pie_oracle.json', import.meta.url), 'utf8'));
 assert.equal(oracle.matplotlib, '3.11.2');
@@ -139,6 +142,46 @@ for (const e of oracle.errors) {
   checks++;
 }
 
+// pie_label: str.format labels on numpy int64/float64 values, as `labels.format(absval=v, frac=v)`
+for (const f of oracle.strformats) {
+  const v = { kind: f.dtype, value: Number(f.value) } as const;
+  const got = pyStrFormat(f.fmt, { absval: v, frac: v });
+  const what = `${JSON.stringify(f.fmt)}.format(${f.dtype} ${f.value})`;
+  if ('out' in f) {
+    assert.ok(got.ok, `${what}: ${got.ok ? '' : got.error}`);
+    assert.equal(got.value, f.out, what);
+  } else {
+    assert.ok(!got.ok, `${what}: want ${f.error.type}: ${f.error.message}`);
+    assert.equal(got.error, f.error.message, what);
+  }
+  checks++;
+}
+
+// pie_label's texts: position, alignment, rotation, size, colour and weight for each call on a pie() container
+for (const p of oracle.pie_labels) {
+  const [, ax] = subplots();
+  const pc = ax.pie(p.x, p.pie);
+  p.calls.forEach((c, k) => {
+    const got = ax.pie_label(pc, c.labels, c.kw);
+    assert.equal(got.length, p.texts[k].length, `${p.name} call ${k}: text count`);
+    got.forEach((t, i) => sameText(t, p.texts[k][i], `${p.name} call ${k} text ${i}`));
+  });
+}
+for (const e of oracle.label_errors) {
+  const [, ax] = subplots();
+  const pc = ax.pie(e.x);
+  assert.throws(() => ax.pie_label(pc, e.labels, e.kw), (err: unknown) => err instanceof Error && err.message === e.error.message, `${e.name}: ${e.error.message}`);
+  checks++;
+}
+{
+  const [, ax] = subplots();
+  const pc = ax.pie([1, 2]);
+  assert.throws(() => ax.pie_label(pc, ['a', 'b'], { textprops: { rotation: 45 } }), TypeError);
+  assert.throws(() => ax.pie_label(pc, 'x', { bogus: 1 }), TypeError);
+  assert.throws(() => ax.pie_label(pc, '{absval!r}'), /not supported in mpl/);
+  assert.throws(() => ax.pie_label({ wedges: [] } as never, ['a']), /PieContainer/);
+}
+
 // What mpl leaves out throws rather than drawing something matplotlib would not
 {
   const [, ax] = subplots();
@@ -157,4 +200,4 @@ for (const e of oracle.errors) {
   assert.deepEqual(res.autotexts.map((t) => t.text), ['25 pct', '75 pct']);
 }
 
-console.log(`pie: ${checks} checks ok against matplotlib ${oracle.matplotlib} (${oracle.arcs.length} arcs, ${oracle.wedges.length} wedge paths, ${oracle.formats.length} autopct formats, ${oracle.pies.length} pies, ${oracle.errors.length} errors)`);
+console.log(`pie: ${checks} checks ok against matplotlib ${oracle.matplotlib} (${oracle.arcs.length} arcs, ${oracle.wedges.length} wedge paths, ${oracle.formats.length} autopct formats, ${oracle.pies.length} pies, ${oracle.errors.length} errors, ${oracle.strformats.length} str.format labels, ${oracle.pie_labels.length} pie_label cases, ${oracle.label_errors.length} pie_label errors)`);

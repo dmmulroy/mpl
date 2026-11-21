@@ -2,7 +2,8 @@
 
 Path.arc and Wedge path vertices (bit-exact, as repr strings), pie()'s wedges (centre, r, theta1, theta2, colours,
 edge, width), its texts (position, string, alignment, rotation, size, colour) and the axes state it leaves (aspect,
-frame, limits, ticks), Python printf-style autopct strings, and the errors pie() raises.
+frame, limits, ticks), Python printf-style autopct strings, and the errors pie() raises; pie_label's texts, its
+str.format labels (`labels.format(absval=, frac=)` on numpy int64/float64 values) and the errors it raises.
 Run with matplotlib 3.11.2 (fixtures/requirements.txt): python fixtures/generate_pie_oracle.py
 """
 import json, os
@@ -101,10 +102,72 @@ ERRORS = [
     error("shade", [1, 2], shadow={"shade": 2}), error("nonfinite", [1, float("inf")]),
 ]
 
+# pie_label: str.format on the container's numpy values, as `labels.format(absval=val, frac=frac)`
+SPECS = ["{absval}", "{frac}", "{absval:d}", "{frac:.0%}", "{frac:.1%}", "{frac:%}", "{absval:.1f}", "{absval:,}", "{absval:,.2f}",
+         "{absval:_d}", "{absval:_}", "{absval:>8}|", "{absval:<8}|", "{absval:^9}|", "{absval:*^11.1f}", "{absval:+d}", "{absval:+}",
+         "{absval: .2f}", "{absval:08.2f}", "{absval:=+10.1f}", "{absval:0=8}", "{absval:e}", "{absval:.2E}", "{absval:g}",
+         "{absval:.3g}", "{absval:#.3g}", "{absval:G}", "{absval:.3}", "{absval:#}", "{absval:x}", "{absval:#X}", "{absval:o}",
+         "{absval:#o}", "{absval:b}", "{absval:#b}", "{absval:_b}", "{absval:,x}", "{frac:.3}", "{frac:10.4f}|", "{frac:010.3%}",
+         "{absval:010,.1f}", "{absval:08,d}", "{absval:012_.2f}", "{{literal}} {absval}", "{frac:.2%} of {absval}", "{absval:F}",
+         "{frac:.0f}", "{absval:.0e}", "{absval:#.0f}", "{absval:%}", "{absval:5}|", "{frac:<+12.3e}|", "{absval:.2d}",
+         "{absval:c}", "plain text", "{absval}{frac}", "{absval:n}"]
+INTS = [0, 7, 15, 1234, 1234567, -3, 255]
+FLOATS = [0.0, 0.35, 12.5, 1234.5678, 1e-05, 123456789.0, 0.125, 2.5, 1 / 3, -0.5, 1e20, 0.999, 0.995]
+
+def strformat(fmt, v):
+    try:
+        return {"out": fmt.format(absval=v, frac=v)}
+    except Exception as e:
+        return {"error": {"type": type(e).__name__, "message": str(e)}}
+
+strformats = ([{"fmt": f, "dtype": "int", "value": int(v), **strformat(f, np.int64(v))} for f in SPECS for v in INTS]
+              + [{"fmt": f, "dtype": "float", "value": r(v), **strformat(f, np.float64(v))} for f in SPECS for v in FLOATS])
+
+def label_case(name, x, pie_kw, calls):
+    fig, ax = plt.subplots()
+    pc = ax.pie(x, **pie_kw)
+    out = [[text_rec(t) for t in ax.pie_label(pc, labels, **kw)] for labels, kw in calls]
+    plt.close(fig)
+    return {"name": name, "x": x, "pie": pie_kw, "calls": [{"labels": l, "kw": kw} for l, kw in calls], "texts": out}
+
+PIE_LABELS = [
+    label_case("format_inside", [15, 30, 45, 10], {"labels": ["Frogs", "Hogs", "Dogs", "Logs"]},
+               [("{absval:d} ({frac:.0%})", {"textprops": {"color": "w", "fontweight": "bold"}})]),
+    label_case("list_outer_rotate", [10, 20, 30, 25, 15], {"labeldistance": None, "explode": [0.1, 0, 0, 0, 0], "startangle": 90},
+               [(["north", "east", "south", "west", "last"], {"distance": 1.15, "rotate": True, "alignment": "outer"}),
+                ("{frac:.1%}", {"distance": 0.7, "textprops": {"fontsize": "small"}})]),
+    label_case("auto_both_sides", [1250.5, 3400.25, 980.0], {"labeldistance": None, "wedgeprops": {"width": 0.3}},
+               [("{absval:,.1f}", {"distance": 0.85}), (["a", "b", "c"], {"distance": 1.2, "textprops": {"size": 9, "c": "C3"}}),
+                (["x", "y", "z"], {"distance": 1.0}), (["p", "q", "r"], {"distance": 0.4, "rotate": True})]),
+    label_case("clockwise_center", [3, 1, 2], {"counterclock": False, "startangle": 200, "center": (0.5, -0.25), "radius": 0.7, "labels": ["i", "j", "k"]},
+               [("{absval}", {"alignment": "center", "distance": 1.3}), ("{frac:.3}", {"alignment": "outer", "rotate": True, "distance": 0.5})]),
+    label_case("partial_unnormalized", [0.2, 0.3, 0.15], {"normalize": False}, [("{frac:.0%} / {absval}", {"textprops": None})]),
+    label_case("int_unnormalized", [0, 1], {"normalize": False}, [("{frac} {absval:d}", {})]),
+]
+
+def label_error(name, x, labels, **kw):
+    fig, ax = plt.subplots()
+    pc = ax.pie(x)
+    try:
+        ax.pie_label(pc, labels, **kw)
+        msg = None
+    except Exception as e:
+        msg = {"type": type(e).__name__, "message": str(e)}
+    plt.close(fig)
+    return {"name": name, "x": x, "labels": labels, "kw": kw, "error": msg}
+
+LABEL_ERRORS = [
+    label_error("count", [1, 2], ["a"]), label_error("alignment", [1, 2], ["a", "b"], alignment="left"),
+    label_error("missing_name", [1, 2], "{value}"), label_error("float_d", [1.5, 2], "{absval:d}"),
+    label_error("single_close", [1, 2], "a}b"), label_error("single_open", [1, 2], "a{b"), label_error("unclosed", [1, 2], "{absval"),
+    label_error("positional", [1, 2], "{}"), label_error("int_precision", [1, 2], "{absval:.2d}"),
+]
+
 rec = {"matplotlib": matplotlib.__version__, "numpy": np.__version__,
        "arcs": [{"theta1": a, "theta2": b, **path_rec(Path.arc(a, b))} for a, b in ARCS],
        "wedges": [{**w, **path_rec(Wedge(tuple(w["center"]), w["r"], w["theta1"], w["theta2"], width=w.get("width")).get_path())} for w in WEDGES],
-       "formats": formats, "pies": PIES, "errors": ERRORS}
+       "formats": formats, "pies": PIES, "errors": ERRORS,
+       "strformats": strformats, "pie_labels": PIE_LABELS, "label_errors": LABEL_ERRORS}
 with open(OUT, "w") as f:
     json.dump(rec, f, indent=1)
 print(f"wrote {OUT}")

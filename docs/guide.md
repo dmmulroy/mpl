@@ -255,7 +255,7 @@ stacked or side by side, horizontal, log, density, weights, cumulative, numpy's 
 styling, multi-line text, log scales, date axes, `twinx`, 9+ bundled styles, PNG output (own Agg port), SVG with glyph
 outlines (matplotlib's `svg.fonttype='path'`) or `<text>`.
 
-Out of scope so far: `violinplot`, `pie`, `stem`, `stairs`, `fill`/`fill_betweenx`, spanning subplots (`subplot_mosaic`,
+Out of scope so far: `violinplot`, `stem`, `stairs`, `fill`/`fill_betweenx`, spanning subplots (`subplot_mosaic`,
 gridspec slices), general mathtext (only the tick-label forms `10^{n}` / `2×10^{n}`), constrained layout. Within the
 plotting calls: hist's `hatch` and per-dataset `linestyle`, `axline` with a `transform`, and errorbar on polar axes or
 with timedelta errors on date axes.

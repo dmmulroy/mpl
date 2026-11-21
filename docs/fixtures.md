@@ -55,6 +55,7 @@ A case is a list of `(method, args, kwargs)` calls that matplotlib runs on `fig,
 | `("spine", [side, setter, value])` | `ax.spines[side].setter(value)` | `ax.spines[side].setter(value)` |
 | `("ticklabel", [axis, i, setter, value])` | `ax.get_{axis}ticklabels()[i].setter(value)` | same |
 | `("$rc", [], {key: value})` | `rcParams.update` before the figure exists (`svg.*` keys only reach SVG output) | `subplots({ rc })` |
+| `{"$ret": i}` as an argument | the value `calls[i]` returned (e.g. the `PieContainer` for `pie_label`) | same |
 
 Run `python3 fixtures/generate_additions.py` (the guard refuses anything but FreeType 2.14.3); it writes only cases missing
 from `_index.json`. `FORCE=1` rewrites every case it defines.

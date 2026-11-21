@@ -61,9 +61,11 @@ export function buildWith(fx: Fixture, subplots: Subplots, dates?: DateCtors): F
     : subplots({ style: fx.style, rc: fx.rc || {} });
   const axes: Axes[] = Array.isArray(made) ? made.flat() : [made];
   let ax: Axes = axes[0];
-  for (const [fn, args0, kwargs] of fx.spec) {
+  // {"$ret": i} as an argument is the value spec[i] returned (pie_label's PieContainer)
+  const rets = new Map<number, unknown>();
+  for (const [index, [fn, args0, kwargs]] of (fx.spec as Fixture[]).entries()) {
     if (fn === '$subplots') continue;
-    const args = args0.map(decode);
+    const args = args0.map((a: unknown) => (a && typeof a === 'object' && '$ret' in a ? rets.get((a as { $ret: number }).$ret) : decode(a)));
     // Figure-level calls are prefixed with 'fig.' in the spec
     if (fn.startsWith('fig.')) {
       const ffn = fn.slice(4);
@@ -137,7 +139,7 @@ export function buildWith(fx: Fixture, subplots: Subplots, dates?: DateCtors): F
     }
     if (typeof (ax as unknown as Dyn)[fn] !== 'function') throw new Error(`no Axes.${fn}`);
     const kw = Object.fromEntries(Object.entries(kwargs).map(([k, v]) => [k, v && typeof v === 'object' && '$transform' in v ? (v.$transform === 'axes' ? ax.transAxes : ax.transData) : decode(v)]));
-    (ax as unknown as Dyn)[fn]?.(...args, ...(Object.keys(kw).length ? [kw] : []));
+    rets.set(index, (ax as unknown as Dyn)[fn]?.(...args, ...(Object.keys(kw).length ? [kw] : [])));
   }
   return fig;
 }
