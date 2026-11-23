@@ -247,7 +247,7 @@ fig.toPNGSync({ colors: 64 });            // palette PNG: at most 64 colors, abo
 fig.toPNGSync({ colors: 64, level: 9 });  // and the built-in deflate's slowest, smallest setting
 ```
 
-The API is matplotlib-shaped (`subplots`, `plot`, `step`, `bar`/`barh`, `hist`, `errorbar`, `boxplot`, `fill_between`,
+The API is matplotlib-shaped (`subplots`, `plot`, `step`, `bar`/`barh`, `hist`, `errorbar`, `boxplot`, `fill_between`/`fill_betweenx`,
 `axhline`/`axvline`/`axline`, `hlines`/`vlines`, `text`, `annotate`, `legend`, `grid`, `set_xlim`, `set_yscale('log')`,
 `twinx`, `tight_layout`, styled tick labels, date axes, 9+ bundled styles); unknown keyword arguments are errors, as in
 matplotlib. Subplot grids: `subplots(nrows, ncols, …)` with sharex/sharey, width/height ratios, `subplots_adjust` and
@@ -256,11 +256,11 @@ grid `tight_layout`.
 Done and covered by the oracle: `plot` (incl. `drawstyle`), `step`, `scatter`, `bar`/`barh`, `hist` (every `histtype`,
 stacked or side by side, horizontal, log, density, weights, cumulative, numpy's bin estimators), `errorbar`
 (symmetric/asymmetric, caps, limits, `errorevery`), `boxplot`, `axhline`/`axvline`/`axline`, `hlines`/`vlines`,
-`fill_between`, `text`/`annotate`, `legend`, `grid` with Line2D kwargs (major/minor), `tight_layout`, per-tick label
+`fill_between`/`fill_betweenx` (where, interpolate, step, edge colour and dashes, zorder), `text`/`annotate`, `legend`, `grid` with Line2D kwargs (major/minor), `tight_layout`, per-tick label
 styling, multi-line text, log scales, date axes, `twinx`, 9+ bundled styles, PNG output (own Agg port), SVG with glyph
 outlines (matplotlib's `svg.fonttype='path'`) or `<text>`.
 
-Out of scope so far: `violinplot`, `stem`, `stairs`, `fill`/`fill_betweenx`, spanning subplots (`subplot_mosaic`,
+Out of scope so far: `violinplot`, `stem`, `stairs`, `fill`, spanning subplots (`subplot_mosaic`,
 gridspec slices), general mathtext (only the tick-label forms `10^{n}` / `2×10^{n}`), constrained layout. Within the
 plotting calls: hist's `hatch` and per-dataset `linestyle`, `axline` with a `transform`, and errorbar on polar axes or
 with timedelta errors on date axes.
