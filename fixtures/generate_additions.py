@@ -1118,6 +1118,17 @@ case("font_inter_superscripts", ("$rc", [], {"font.family": ["Inter"]}),
      ("text", [1.05, 4.8e-15, SUP], {"fontweight": "semibold"}), ("text", [1.05, 4.0e-15, SUB], {"fontweight": "bold"}),
      ("text", [1.05, 3.2e-15, "10⁻³ ≤ x₁ ≤ 10³"], {"fontweight": "bold"}))
 
+# Inter's Greek and Coptic block (U+0370–U+03FF, as far as Inter v4.0 maps it), in every bundled weight, kerned as Inter kerns
+# Greek (HarfBuzz shapes Greek runs with Inter's DFLT script, whose lookups equal latn's); μ (U+03BC) next to the micro sign µ (U+00B5)
+GREEK_UC = "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ ΆΈΉΊΌΎΏ ΪΫ"
+GREEK_LC = "αβγδεζηθικλμνξοπρςστυφχψω άέήίόύώ ϊϋΐΰ ϑϕϖϐϰϱϵ"
+case("font_inter_greek", ("$rc", [], {"font.family": ["Inter"]}),
+     ("plot", [[1, 2, 3], [2, 7, 5]], {"label": "μ ± σ"}), ("plot", [[1, 2, 3], [6, 1, 3]], {"label": "Δt = 5 μs (µs)"}),
+     ("legend", []), ("set_title", ["Ω-resistance, α = 0.05, λ = 532 nm"]), ("set_ylabel", ["θ (rad) · Φ"]), ("set_xlabel", ["Τάχος, ΑΥΤΟ, Ψ·Ω, ΓΆΤΑ"]),
+     ("text", [1.05, 6.4, GREEK_UC]), ("text", [1.05, 5.6, GREEK_LC], {"fontweight": "medium"}),
+     ("text", [1.05, 4.8, GREEK_UC], {"fontweight": "semibold"}), ("text", [1.05, 4.0, GREEK_LC], {"fontweight": "bold"}),
+     ("text", [1.05, 3.2, "π ≈ 3.14, Σx² ≥ 0, ΔT·σ"], {"fontweight": "bold"}))
+
 # Issue #97: matplotlib's optional positionals, bound by name (each figure draws what the keyword forms draw)
 case("positional_reflines_spans", ("plot", [x, sx]),
      ("axhline", [0.5, 0.1, 0.9], {"color": "C3"}), ("axvline", [2, 0.2, 0.8]), ("axvspan", [3, 4, 0.1, 0.6], {"alpha": 0.3}),
