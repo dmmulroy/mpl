@@ -1129,6 +1129,12 @@ case("font_inter_greek", ("$rc", [], {"font.family": ["Inter"]}),
      ("text", [1.05, 4.8, GREEK_UC], {"fontweight": "semibold"}), ("text", [1.05, 4.0, GREEK_LC], {"fontweight": "bold"}),
      ("text", [1.05, 3.2, "π ≈ 3.14, Σx² ≥ 0, ΔT·σ"], {"fontweight": "bold"}))
 
+# font.family is validate_stringlist: the string "Inter, DejaVu Sans" is two families, so characters Inter lacks
+# (∀ ∈ ∇ ⇄) draw from DejaVu Sans, as with the list ["Inter", "DejaVu Sans"] (an .mplstyle line reads the same way)
+case("font_family_string_list", ("$rc", [], {"font.family": "Inter, DejaVu Sans"}),
+     ("plot", [[1, 2, 3], [2, 7, 5]], {"label": "∀x ∈ A"}), ("legend", []), ("set_title", ["∇·E ⇄ ρ/ε₀, Δt ≈ 5 μs"]),
+     ("set_xlabel", ["time (μs)"]))
+
 # Issue #97: matplotlib's optional positionals, bound by name (each figure draws what the keyword forms draw)
 case("positional_reflines_spans", ("plot", [x, sx]),
      ("axhline", [0.5, 0.1, 0.9], {"color": "C3"}), ("axvline", [2, 0.2, 0.8]), ("axvspan", [3, 4, 0.1, 0.6], {"alpha": 0.3}),

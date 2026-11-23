@@ -97,7 +97,9 @@ Text uses DejaVu Sans/Serif or Inter (`scripts/gen_fonts.py` bakes them).
   libraqm shapes each run of one face and one script on its own (fixtures `font_fallback_chain*`): no kerning or ligature
   crosses a font change or a Latin/Greek boundary, so `'ΔT'` in Inter does not kern Δ against T (fixture `font_inter_greek`,
   `fixtures/fonts_layout.py`). With `font.family: ['Inter', 'DejaVu
-  Sans']`, ∀ ∈ ∇ ⇄ draw from DejaVu.
+  Sans']`, ∀ ∈ ∇ ⇄ draw from DejaVu. As in matplotlib, `font.family` is a list (`validate_stringlist`): the string
+  `'Inter, DejaVu Sans'`, in rc or as an `.mplstyle` line `font.family: Inter, DejaVu Sans`, is the same two families
+  (fixture `font_family_string_list`).
 - Not matched, by design:
   - matplotlib ends every chain with LastResort, a box-per-Unicode-block font mpl doesn't ship, so a character no
     listed font has draws the first font's .notdef box.
